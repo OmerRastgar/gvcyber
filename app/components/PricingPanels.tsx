@@ -12,30 +12,27 @@ type PricingPanelsProps = {
   formalDetails?: string;
 };
 
-type RegionCode = "global" | "uk" | "pk";
+type RegionCode = "global" | "uk";
 
-const STORAGE_KEY = "cybergaar-region";
+const STORAGE_KEY = "gvcyber-region";
 const conversionRates = {
   uk: 0.7412,
-  pk: 278,
 };
 
 function normaliseRegion(value: string | null | undefined): RegionCode | null {
-  if (value === "uk" || value === "pk" || value === "global") return value;
+  if (value === "uk" || value === "global") return value;
   return null;
 }
 
 function readRegionFromPath(pathname: string): RegionCode | null {
   const path = pathname.toLowerCase();
   if (path === "/uk" || path.startsWith("/uk/")) return "uk";
-  if (path === "/pk" || path.startsWith("/pk/")) return "pk";
   return null;
 }
 
 function inferRegionFromLocale(): RegionCode {
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const language = navigator.language.toLowerCase();
-  if (timeZone === "Asia/Karachi" || language.endsWith("-pk")) return "pk";
   if (timeZone === "Europe/London" || language === "en-gb") return "uk";
   return "global";
 }
@@ -45,24 +42,17 @@ function formatGbp(usd: number) {
   return new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 0 }).format(value);
 }
 
-function formatPkr(usd: number) {
-  const converted = usd * conversionRates.pk;
-  const value = converted >= 100000 ? Math.round(converted / 1000) * 1000 : converted >= 10000 ? Math.round(converted / 500) * 500 : Math.round(converted / 10) * 10;
-  return `PKR ${new Intl.NumberFormat("en-PK", { maximumFractionDigits: 0 }).format(value)}`;
-}
-
 function convertDollarPrices(text: string, region: RegionCode) {
   if (region === "global") return text;
   return text.replace(/\$(\d[\d,]*(?:\.\d+)?)/g, (_match, value: string) => {
     const usd = Number(value.replace(/,/g, ""));
     if (!Number.isFinite(usd)) return _match;
-    return region === "uk" ? formatGbp(usd) : formatPkr(usd);
+    return formatGbp(usd);
   });
 }
 
 function getRegionLabel(region: RegionCode) {
   if (region === "uk") return "United Kingdom";
-  if (region === "pk") return "Pakistan";
   return "Global";
 }
 
@@ -87,9 +77,7 @@ export default function PricingPanels({ category, risk, price, priceDetails, for
   const isAudit = category === "audits";
   const exchangeNote = region === "uk"
     ? "Indicative conversion uses 1 USD ≈ £0.74."
-    : region === "pk"
-      ? "Indicative conversion uses 1 USD ≈ PKR 278."
-      : "Global pricing is shown in USD.";
+    : "Global pricing is shown in USD.";
 
   return (
     <section className={isAudit ? "service-evidence-grid audit-pricing-layout" : "service-evidence-grid"}>
@@ -111,7 +99,7 @@ export default function PricingPanels({ category, risk, price, priceDetails, for
           {activeAuditTab === "internal" ? (
             <div className="audit-tab-panel" role="tabpanel">
               <h2>{converted.internalPrice}</h2>
-              <h3>Cybergaar readiness and implementation support</h3>
+              <h3>Golden Valley Cyber readiness and implementation support</h3>
               <span>{converted.internalDetails}</span>
               <p>Usually covers gap assessment, internal evidence preparation, policy or control improvement, remediation guidance and implementation support before any formal assessment.</p>
             </div>
@@ -132,7 +120,7 @@ export default function PricingPanels({ category, risk, price, priceDetails, for
       ) : (
         <>
           <article className="price-panel">
-            <p>INDICATIVE CYBERGAAR READINESS / DELIVERY · {getRegionLabel(region).toUpperCase()}</p>
+            <p>INDICATIVE GOLDEN VALLEY CYBER READINESS / DELIVERY · {getRegionLabel(region).toUpperCase()}</p>
             <h2>{converted.internalPrice}</h2>
             <span>{converted.internalDetails}</span>
             <div className="pricing-scope-note">

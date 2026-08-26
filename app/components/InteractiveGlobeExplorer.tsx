@@ -122,7 +122,7 @@ function drawGlobe(canvas: HTMLCanvasElement, rotationX: number, rotationY: numb
   const ocean = context.createRadialGradient(centerX - radius * 0.28, centerY - radius * 0.35, radius * 0.08, centerX, centerY, radius);
   ocean.addColorStop(0, "#58d7ef");
   ocean.addColorStop(0.45, "#0b607a");
-  ocean.addColorStop(1, "#082c3c");
+  ocean.addColorStop(1, "#0B132B");
 
   context.save();
   context.beginPath();
@@ -131,8 +131,8 @@ function drawGlobe(canvas: HTMLCanvasElement, rotationX: number, rotationY: numb
   context.fillStyle = ocean;
   context.fillRect(centerX - radius, centerY - radius, radius * 2, radius * 2);
 
-  context.fillStyle = "rgba(185,255,102,.42)";
-  context.strokeStyle = "rgba(229,255,210,.34)";
+  context.fillStyle = "rgba(0,180,216,.42)";
+  context.strokeStyle = "rgba(0,180,216,.28)";
   context.lineWidth = 1.2;
   landMasses.forEach((landMass) => {
     context.beginPath();
@@ -191,7 +191,7 @@ function drawGlobe(canvas: HTMLCanvasElement, rotationX: number, rotationY: numb
     context.stroke();
   }
 
-  context.fillStyle = "rgba(185,255,102,.75)";
+  context.fillStyle = "rgba(0,255,153,.85)";
   globeCountries.forEach((country) => {
     const location = countryPoints[country.name];
     if (!location) return;
@@ -383,7 +383,7 @@ export default function InteractiveGlobeExplorer() {
         </div>
 
         <div className="globe-related">
-          <p>Related Cybergaar work</p>
+          <p>Related Golden Valley Cyber work</p>
           {selectedCountry.relatedServices.map((service) => <span key={service}>{service}</span>)}
         </div>
 

@@ -3,10 +3,25 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Solutions | Product Studio, MSP Partners and Security Programmes | Cybergaar",
-  description: "Explore Cybergaar solutions for Product Studio compliance automation, MSP security partnerships, assurance readiness, attack surface clarity and continuous resilience.",
+  title: "Solutions | Product Studio, MSP Partners and Security Programmes | Golden Valley Cyber",
+  description: "Explore Golden Valley Cyber solutions for Product Studio compliance automation, MSP security partnerships, assurance readiness, attack surface clarity and continuous resilience.",
   keywords: ["cyber security solutions", "Product Studio", "compliance automation", "MSP security partner", "assurance readiness", "attack surface management", "continuous vulnerability scanning", "security implementation"],
   alternates: { canonical: "/solutions" },
+  openGraph: {
+    title: "Solutions | Product Studio, MSP Partners and Security Programmes | Golden Valley Cyber",
+    description: "Product Studio compliance automation, MSP security partnerships, assurance readiness, attack surface clarity and continuous resilience.",
+    url: "/solutions",
+    siteName: "Golden Valley Cyber",
+    locale: "en_GB",
+    type: "website",
+    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Solutions | Golden Valley Cyber" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Solutions | Golden Valley Cyber",
+    description: "Tools and programmes for clearer security work.",
+    images: ["/og.png"],
+  },
 };
 
 const solutions = [
@@ -28,7 +43,7 @@ export default function SolutionsPage() {
           <p className="eyebrow"><span /> SOLUTIONS</p>
           <h1>Tools and programmes for clearer security work.</h1>
         </div>
-        <p>Use Cybergaar directly for focused security outcomes, or combine services with Product Studio and MSP delivery support.</p>
+        <p>Use Golden Valley Cyber directly for focused security outcomes, or combine services with Product Studio and MSP delivery support.</p>
       </section>
       <section className="solution-list">
         {solutions.map(([title, copy, href], index) => (

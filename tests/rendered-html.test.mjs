@@ -16,14 +16,14 @@ async function render(path = "/") {
   );
 }
 
-test("renders the Cybergaar homepage and primary navigation", async () => {
+test("renders the Golden Valley Cyber homepage and primary navigation", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Cybergaar \| Security Audits, ISO 27001, Pentesting and Vulnerability Scanning<\/title>/i);
-  assert.match(html, /See every gap/);
+  assert.match(html, /<title>Golden Valley Cyber \| Security Audits, ISO 27001, Pentesting and Vulnerability Scanning<\/title>/i);
+  assert.match(html, /Sovereign digital resilience/);
   assert.match(html, /TRUSTED BY CUSTOMERS AND PARTNERS/);
   assert.match(html, /Cubercore/);
   assert.match(html, /href="https:\/\/sakoon\.com\.pk\/"/);
@@ -44,7 +44,6 @@ test("renders the Cybergaar homepage and primary navigation", async () => {
   assert.match(html, /href="\/services\/cyber-essentials"/);
   assert.match(html, /href="\/case-studies"/);
   assert.match(html, /href="\/contact"/);
-  assert.match(html, /href="https:\/\/demo\.cybergaar\.com"/);
 });
 
 test("renders a complete service detail route", async () => {
@@ -57,7 +56,7 @@ test("renders a complete service detail route", async () => {
   assert.match(html, /Internal/);
   assert.match(html, /External/);
   assert.match(html, /people, business complexity and technology footprint/);
-  assert.match(html, /Discuss|Talk to Cybergaar/);
+  assert.match(html, /Discuss|Talk to Golden Valley Cyber/);
 });
 
 test("keeps the complete 30-service catalogue in one data source", async () => {
@@ -151,21 +150,21 @@ test("renders the global standards globe page without loading it into the homepa
 test("serves search-engine discovery files", async () => {
   const [robots, sitemap] = await Promise.all([render("/robots.txt"), render("/sitemap.xml")]);
   assert.equal(robots.status, 200);
-  assert.match(await robots.text(), /Sitemap: https:\/\/cybergaar\.com\/sitemap\.xml/);
+  assert.match(await robots.text(), /Sitemap: https:\/\/gvcyber\.com\/sitemap\.xml/);
   assert.equal(sitemap.status, 200);
   const xml = await sitemap.text();
-  assert.match(xml, /https:\/\/cybergaar\.com\/contact/);
-  assert.match(xml, /https:\/\/cybergaar\.com\/industries/);
-  assert.match(xml, /https:\/\/cybergaar\.com\/industries\/financial-services/);
-  assert.match(xml, /https:\/\/cybergaar\.com\/expert-suggestions/);
-  assert.match(xml, /https:\/\/cybergaar\.com\/expert-suggestions\/iso-27001-readiness-before-certification/);
-  assert.match(xml, /https:\/\/cybergaar\.com\/solutions/);
-  assert.match(xml, /https:\/\/cybergaar\.com\/global-standards/);
-  assert.match(xml, /https:\/\/cybergaar\.com\/case-studies\/cloudflare-zero-trust-shared-access/);
-  assert.match(xml, /https:\/\/cybergaar\.com\/case-studies\/cisco-router-network-hardening/);
-  assert.match(xml, /https:\/\/cybergaar\.com\/case-studies\/iso-42001-ai-governance-saas/);
-  assert.match(xml, /https:\/\/cybergaar\.com\/case-studies\/factory-ransomware-digital-forensics/);
-  assert.doesNotMatch(xml, /https:\/\/cybergaar\.com\/case-studies\/fintech-enterprise-readiness/);
+  assert.match(xml, /https:\/\/gvcyber\.com\/contact/);
+  assert.match(xml, /https:\/\/gvcyber\.com\/industries/);
+  assert.match(xml, /https:\/\/gvcyber\.com\/industries\/financial-services/);
+  assert.match(xml, /https:\/\/gvcyber\.com\/expert-suggestions/);
+  assert.match(xml, /https:\/\/gvcyber\.com\/expert-suggestions\/iso-27001-readiness-before-certification/);
+  assert.match(xml, /https:\/\/gvcyber\.com\/solutions/);
+  assert.match(xml, /https:\/\/gvcyber\.com\/global-standards/);
+  assert.match(xml, /https:\/\/gvcyber\.com\/case-studies\/cloudflare-zero-trust-shared-access/);
+  assert.match(xml, /https:\/\/gvcyber\.com\/case-studies\/cisco-router-network-hardening/);
+  assert.match(xml, /https:\/\/gvcyber\.com\/case-studies\/iso-42001-ai-governance-saas/);
+  assert.match(xml, /https:\/\/gvcyber\.com\/case-studies\/factory-ransomware-digital-forensics/);
+  assert.doesNotMatch(xml, /https:\/\/gvcyber\.com\/case-studies\/fintech-enterprise-readiness/);
 });
 
 test("keeps client stories out of the primary navigation and exposes three mobile accordions", async () => {
@@ -177,29 +176,30 @@ test("keeps client stories out of the primary navigation and exposes three mobil
   assert.match(header, /Product Studio/);
   assert.match(header, /flagSrc: "\/flags\/global\.svg"/);
   assert.match(header, /flagSrc: "\/flags\/gb\.svg"/);
-  assert.match(header, /flagSrc: "\/flags\/pk\.svg"/);
+  assert.doesNotMatch(header, /flagSrc: "\/flags\/pk\.svg"/);
   assert.match(header, /region-current-label/);
-  assert.match(header, /login-link/);
-  assert.doesNotMatch(header, /login-icon/);
-  assert.match(header, /Contact<\/a>\s*<a className="login-link"/);
+  assert.doesNotMatch(header, /login-link/);
+  assert.match(header, /Contact<\/a>\s*<div className="region-picker"/);
   assert.match(css, /region-button:hover/);
-  assert.match(header, /cybergaar-region/);
+  assert.match(header, /gvcyber-region/);
   const pricing = await readFile(new URL("../app/components/PricingPanels.tsx", import.meta.url), "utf8");
   assert.match(pricing, /1 USD ≈ £0\.74/);
-  assert.match(pricing, /1 USD ≈ PKR 278/);
+  assert.doesNotMatch(pricing, /PKR/);
   assert.match(pricing, /people, business complexity and technology footprint/);
   await Promise.all([
     stat(new URL("../public/flags/global.svg", import.meta.url)),
     stat(new URL("../public/flags/gb.svg", import.meta.url)),
-    stat(new URL("../public/flags/pk.svg", import.meta.url)),
   ]);
   const socials = await readFile(new URL("../app/data/socials.ts", import.meta.url), "utf8");
   const footer = await readFile(new URL("../app/components/SiteFooter.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(footer, /Clear assurance/);
   assert.doesNotMatch(footer, /Stronger business/);
-  assert.match(socials, /huggingface\.co\/CyberGaar\/CyberSecurity/);
-  assert.match(socials, /github\.com\/CyberGaar/);
-  assert.match(socials, /linkedin\.com\/company\/cybergaar/);
-  assert.match(socials, /x\.com\/CyberGaar_/);
-  assert.match(socials, /instagram\.com\/cybergaar/);
+  assert.match(footer, /A brand of/);
+  assert.match(footer, /Soft Innovators/);
+  assert.match(footer, /https:\/\/www\.softinnovators\.com\//);
+  assert.match(socials, /huggingface\.co\/gvcyber\/CyberSecurity/);
+  assert.match(socials, /github\.com\/gvcyber/);
+  assert.match(socials, /linkedin\.com\/company\/gvcyber/);
+  assert.match(socials, /x\.com\/gvcyber/);
+  assert.match(socials, /instagram\.com\/gvcyber/);
 });

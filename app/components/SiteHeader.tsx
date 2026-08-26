@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import { getServicesByCategory } from "../data/services";
@@ -6,10 +6,9 @@ import { getServicesByCategory } from "../data/services";
 const regions = [
   { code: "global", flagSrc: "/flags/global.svg", label: "Global", href: "/" },
   { code: "uk", flagSrc: "/flags/gb.svg", label: "United Kingdom", href: "/uk" },
-  { code: "pk", flagSrc: "/flags/pk.svg", label: "Pakistan", href: "/pk" },
 ];
 
-const REGION_STORAGE_KEY = "cybergaar-region";
+const REGION_STORAGE_KEY = "gvcyber-region";
 
 const auditLinks = getServicesByCategory("audits").slice(0, 6);
 const scanLinks = getServicesByCategory("vulnerability-scanning").slice(0, 4);
@@ -27,7 +26,7 @@ const discoveryMenus = {
   },
   solutions: {
     title: "Solutions",
-    copy: "Use Cybergaar technology directly or extend your own managed service with our security capability.",
+    copy: "Use Golden Valley Cyber technology directly or extend your own managed service with our security capability.",
     groups: [
       { title: "Product", links: [{ label: "Product Studio", href: "/product-studio" }, { label: "Open-source compliance automation", href: "/product-studio" }] },
       { title: "Partners", links: [{ label: "MSP partner programme", href: "/msp" }, { label: "Multi-client delivery", href: "/msp" }] },
@@ -58,10 +57,6 @@ export default function SiteHeader() {
       setCurrentRegion(regions[1]);
       window.localStorage.setItem(REGION_STORAGE_KEY, "uk");
     }
-    else if (path === "/pk" || path.startsWith("/pk/")) {
-      setCurrentRegion(regions[2]);
-      window.localStorage.setItem(REGION_STORAGE_KEY, "pk");
-    }
     else {
       const storedRegion = window.localStorage.getItem(REGION_STORAGE_KEY);
       const matchingRegion = regions.find((region) => region.code === storedRegion);
@@ -71,8 +66,7 @@ export default function SiteHeader() {
       }
       const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       const language = navigator.language.toLowerCase();
-      if (timeZone === "Asia/Karachi" || language.endsWith("-pk")) setCurrentRegion(regions[2]);
-      else if (timeZone === "Europe/London" || language === "en-gb") setCurrentRegion(regions[1]);
+      if (timeZone === "Europe/London" || language === "en-gb") setCurrentRegion(regions[1]);
     }
   }, []);
 
@@ -109,8 +103,8 @@ export default function SiteHeader() {
 
   return (
     <header className="site-header reference-header">
-      <a className="brand" href="/" aria-label="Cybergaar home" onClick={closeMenus}>
-        <img src="/logo.png" alt="Cybergaar" width="885" height="133" />
+      <a className="brand" href="/" aria-label="Golden Valley Cyber home" onClick={closeMenus}>
+        <img src="/logo.png" alt="Golden Valley Cyber" width="885" height="133" />
       </a>
 
       <button className="menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={toggleMobileMenu}>
@@ -149,12 +143,11 @@ export default function SiteHeader() {
 
         <div className="secondary-nav">
           <a href="/contact" onClick={closeMenus}>Contact</a>
-          <a className="login-link" href="https://demo.cybergaar.com" target="_blank" rel="noreferrer" onClick={closeMenus}>Login</a>
           <div className="region-picker">
             <button
               type="button"
               className="region-button"
-              aria-label={`Select Cybergaar site. Current site: ${currentRegion.label}`}
+              aria-label={`Select Golden Valley Cyber site. Current site: ${currentRegion.label}`}
               aria-expanded={regionOpen}
               aria-controls="region-menu"
               onClick={() => { setActiveMenu(null); setRegionOpen(!regionOpen); }}
@@ -164,7 +157,7 @@ export default function SiteHeader() {
               <span className="sr-only">Current site: {currentRegion.label}</span>
             </button>
             <div className={`region-menu ${regionOpen ? "region-menu-open" : ""}`} id="region-menu">
-              <p>Select a Cybergaar site</p>
+              <p>Select a Golden Valley Cyber site</p>
               {regions.map((region) => (
                 <a className={currentRegion.code === region.code ? "active-region" : ""} href={region.href} key={region.code} onClick={() => selectRegion(region)}>
                   <img className="region-flag" src={region.flagSrc} alt="" aria-hidden="true" />{region.label}
@@ -182,7 +175,7 @@ export default function SiteHeader() {
             {activeMenu === "services" ? (
               <>
                 <div className="mega-intro">
-                  <p>EXPLORE CYBERGAAR</p>
+                  <p>EXPLORE GOLDEN VALLEY CYBER</p>
                   <h2>Services</h2>
                   <span>Audit, scan and test your environment with evidence-led security services.</span>
                   <a href="/services" onClick={closeMenus}>Explore all services <Arrow /></a>
@@ -208,7 +201,7 @@ export default function SiteHeader() {
             ) : (
               <>
                 <div className="mega-intro">
-                  <p>EXPLORE CYBERGAAR</p>
+                  <p>EXPLORE GOLDEN VALLEY CYBER</p>
                   <h2>{discoveryMenus[activeMenu].title}</h2>
                   <span>{discoveryMenus[activeMenu].copy}</span>
                   <a href={activeMenu === "solutions" ? "/solutions" : "/industries"} onClick={closeMenus}>Explore {discoveryMenus[activeMenu].title.toLowerCase()} <Arrow /></a>

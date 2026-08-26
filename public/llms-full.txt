@@ -1,12 +1,12 @@
-# Cybergaar — Full content overview
+# Golden Valley Cyber — Full content overview
 
-Cybergaar provides cyber security assurance services. The focus is evidence-led security
+Golden Valley Cyber provides cyber security assurance services. The focus is evidence-led security
 work: security audits, ISO 27001 implementation, application security testing,
 vulnerability scanning, and penetration testing.
 
 ## Home
 
-See every gap. Secure every move. Cybergaar helps businesses understand and reduce cyber
+Sovereign digital resilience. Golden Valley Cyber helps businesses understand and reduce cyber
 risk through focused security audits, penetration testing and vulnerability scanning.
 
 Industries covered: financial services, healthcare, technology and SaaS, public sector,
@@ -23,7 +23,7 @@ Common services people search for:
 
 ## Global standards
 
-Cybergaar helps teams connect cyber security and compliance frameworks to practical work.
+Golden Valley Cyber helps teams connect cyber security and compliance frameworks to practical work.
 Frameworks include ISO 27001, Cyber Essentials, Cyber Essentials Plus, SOC 2, PCI DSS,
 GDPR, NIST CSF, HIPAA, DORA, NIS2, and regional standards across North America, South
 America, Europe, Asia, Asia Pacific, the Middle East, and Africa.
@@ -82,4 +82,4 @@ audit, exposure validation, and secure delivery.
 
 ## Contact
 
-Email hello@cybergaar.com. Cybergaar aims to respond within one business day.
+Email hello@gvcyber.com. Golden Valley Cyber aims to respond within one business day.

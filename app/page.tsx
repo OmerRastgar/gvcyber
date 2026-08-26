@@ -4,8 +4,8 @@ import SiteHeader from "./components/SiteHeader";
 import { caseStudies } from "./data/caseStudies";
 
 export const metadata: Metadata = {
-  title: "Cybergaar | Security Audits, ISO 27001, Pentesting and Vulnerability Scanning",
-  description: "Cybergaar provides ISO audit support, ISO 27001 implementation, security audits, application security testing, penetration testing and vulnerability scanning.",
+  title: "Golden Valley Cyber | Security Audits, ISO 27001, Pentesting and Vulnerability Scanning",
+  description: "Golden Valley Cyber provides ISO audit support, ISO 27001 implementation, security audits, application security testing, penetration testing and vulnerability scanning.",
   keywords: [
     "ISO audit",
     "ISO 27001",
@@ -20,17 +20,17 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Cybergaar | Security Audits, ISO 27001, Pentesting and Vulnerability Scanning",
+    title: "Golden Valley Cyber | Security Audits, ISO 27001, Pentesting and Vulnerability Scanning",
     description: "ISO audit support, ISO 27001 implementation, security audits, application security testing, penetration testing and vulnerability scanning.",
-    url: "https://cybergaar.com",
-    siteName: "Cybergaar",
-    locale: "en_US",
+    url: "https://gvcyber.com",
+    siteName: "Golden Valley Cyber",
+    locale: "en_GB",
     type: "website",
-    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Cybergaar — See every gap. Secure every move." }],
+    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Golden Valley Cyber — Sovereign digital resilience." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cybergaar | Security Audits, ISO 27001, Pentesting and Vulnerability Scanning",
+    title: "Golden Valley Cyber | Security Audits, ISO 27001, Pentesting and Vulnerability Scanning",
     description: "ISO audit support, ISO 27001 implementation, security audits, application security testing, penetration testing and vulnerability scanning.",
     images: ["/og.png"],
   },
@@ -95,10 +95,10 @@ const homepageStructuredData = {
   "@graph": [
     {
       "@type": "ProfessionalService",
-      name: "Cybergaar",
-      url: "https://cybergaar.com",
+      name: "Golden Valley Cyber",
+      url: "https://gvcyber.com",
       description: "Security audit, ISO 27001 implementation, application security testing, vulnerability scanning and penetration testing services.",
-      areaServed: ["Global", "United Kingdom", "Pakistan"],
+      areaServed: ["Global", "United Kingdom"],
       serviceType: [
         "ISO audit",
         "ISO 27001 implementation",
@@ -113,12 +113,12 @@ const homepageStructuredData = {
     },
     {
       "@type": "ItemList",
-      name: "Cybergaar security services",
+      name: "Golden Valley Cyber security services",
       itemListElement: searchServices.map((service, index) => ({
         "@type": "ListItem",
         position: index + 1,
         name: service.title,
-        url: `https://cybergaar.com${service.href}`,
+        url: `https://gvcyber.com${service.href}`,
       })),
     },
   ],
@@ -136,11 +136,11 @@ export default function Home() {
       <section className="hero reference-hero" id="top">
         <div className="hero-noise" aria-hidden="true" />
         <div className="hero-copy">
-          <p className="eyebrow"><span /> CYBER ASSURANCE, MADE CLEAR</p>
-          <h1>See every gap.<br />Secure every move.</h1>
+          <p className="eyebrow"><span /> CYBER SECURITY CONSULTANCY</p>
+          <h1>Sovereign digital<br />resilience.</h1>
           <p className="hero-intro">
-            We help businesses understand and reduce cyber risk through focused
-            security audits, penetration testing and vulnerability scanning.
+            Deterministic, audit-ready security — built on the heritage of the
+            UK&apos;s cyber cluster, without generative-AI opacity.
           </p>
           <a className="reference-link" href="/services">Explore what we do <Arrow /></a>
         </div>
@@ -188,7 +188,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="offers" aria-label="Cybergaar industries, services and solutions">
+      <section className="offers" aria-label="Golden Valley Cyber industries, services and solutions">
         {offers.map((offer) => (
           <article className="offer-column" id={offer.id} key={offer.title}>
             <div className="offer-title">
@@ -205,10 +205,10 @@ export default function Home() {
       </section>
 
       <section className="about-statement" id="about">
-        <p>Cybergaar turns technical exposure into business decisions. We look deeper, explain plainly and focus on the risks that can genuinely affect your organisation.</p>
+        <p>Golden Valley Cyber turns technical exposure into verifiable, deterministic security decisions. We look deeper, explain plainly and focus on the risks that can genuinely affect your organisation.</p>
       </section>
 
-      <section className="search-services" aria-label="Common Cybergaar security services">
+      <section className="search-services" aria-label="Common Golden Valley Cyber security services">
         <div className="reference-section-title">
           <h2>Security work people search for</h2>
           <a href="/services">See services <Arrow /></a>
@@ -253,7 +253,7 @@ export default function Home() {
         </div>
         <div className="contact-side">
           <p>Tell us what you&apos;re protecting, what&apos;s changing, or where you need certainty. We&apos;ll help you find the right first step.</p>
-          <a className="reference-link" href="/contact">Contact Cybergaar <Arrow /></a>
+          <a className="reference-link" href="/contact">Contact Golden Valley Cyber <Arrow /></a>
         </div>
       </section>
 

@@ -22,9 +22,9 @@ export async function generateMetadata({ params }: IndustryPageProps): Promise<M
   const industry = getIndustry(slug);
   if (!industry) return {};
   return {
-    title: `${industry.title} Cyber Security Services | Cybergaar`,
+    title: `${industry.title} Cyber Security Services | Golden Valley Cyber`,
     description: `${industry.summary} View applicable audits, vulnerability scanning and penetration testing services for ${industry.title.toLowerCase()}.`,
-    keywords: [industry.title, "security audits", "vulnerability scanning", "penetration testing", "application security", "ISO 27001", "Cybergaar"],
+    keywords: [industry.title, "security audits", "vulnerability scanning", "penetration testing", "application security", "ISO 27001", "Golden Valley Cyber"],
     alternates: { canonical: `/industries/${industry.slug}` },
   };
 }
@@ -38,7 +38,7 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
     "@context": "https://schema.org",
     "@type": "Service",
     name: `${industry.title} cyber security services`,
-    provider: { "@type": "Organization", name: "Cybergaar", url: "https://cybergaar.com" },
+    provider: { "@type": "Organization", name: "Golden Valley Cyber", url: "https://gvcyber.com" },
     areaServed: industry.title,
     description: industry.summary,
     hasOfferCatalog: {
@@ -47,7 +47,7 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
       itemListElement: groups.flatMap((group) =>
         industry[group.key].map((serviceSlug) => {
           const service = getService(serviceSlug);
-          return service ? { "@type": "Offer", itemOffered: { "@type": "Service", name: service.name, url: `https://cybergaar.com/services/${service.slug}` } } : null;
+          return service ? { "@type": "Offer", itemOffered: { "@type": "Service", name: service.name, url: `https://gvcyber.com/services/${service.slug}` } } : null;
         }).filter(Boolean),
       ),
     },

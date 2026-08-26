@@ -1,11 +1,11 @@
-# Cybergaar
+# Golden Valley Cyber
 
-Cybergaar provides cyber security assurance services: security audits, ISO 27001
+Golden Valley Cyber provides cyber security assurance services: security audits, ISO 27001
 implementation, ISO audit support, application security testing, vulnerability scanning,
 and penetration testing. Work is described in concrete terms focused on reducing real
 exposure and making the next action clear.
 
-## What Cybergaar does
+## What Golden Valley Cyber does
 
 - Security audits and compliance readiness (ISO 27001, SOC 2, PCI DSS, Cyber Essentials,
   GDPR, HIPAA, NIST CSF, DORA, NIS2, SAMA, CMMC and more).
@@ -18,24 +18,24 @@ exposure and making the next action clear.
 
 ## Services
 
-- [ISO 27001](https://cybergaar.com/services/iso-27001): ISMS readiness, gap assessment,
+- [ISO 27001](https://gvcyber.com/services/iso-27001): ISMS readiness, gap assessment,
   control evidence and certification audit support.
-- [PCI DSS](https://cybergaar.com/services/pci-dss): readiness and implementation support
+- [PCI DSS](https://gvcyber.com/services/pci-dss): readiness and implementation support
   for organisations processing card payments.
-- [SOC 2](https://cybergaar.com/services/soc-2): control design and evidence support for
+- [SOC 2](https://gvcyber.com/services/soc-2): control design and evidence support for
   SaaS and technology companies.
-- [Cyber Essentials](https://cybergaar.com/services/cyber-essentials): UK baseline
+- [Cyber Essentials](https://gvcyber.com/services/cyber-essentials): UK baseline
   certification readiness and remediation.
-- [Vulnerability scanning](https://cybergaar.com/services/vulnerability-scanning): network,
+- [Vulnerability scanning](https://gvcyber.com/services/vulnerability-scanning): network,
   host, database, cloud and authenticated scanning with validation.
-- [Penetration testing](https://cybergaar.com/services/penetration-testing): manual testing
+- [Penetration testing](https://gvcyber.com/services/penetration-testing): manual testing
   across web, mobile, network, cloud, wireless, social engineering and IoT.
 
 ## Regions
 
-Cybergaar serves a global audience with site variants for the United Kingdom
-(https://cybergaar.com/uk) and Pakistan (https://cybergaar.com/pk).
+Golden Valley Cyber serves a global audience with a site variant for the United Kingdom
+(https://gvcyber.com/uk).
 
 ## Contact
 
-Email hello@cybergaar.com to discuss an engagement or scope a security audit or test.
+Email hello@gvcyber.com to discuss an engagement or scope a security audit or test.

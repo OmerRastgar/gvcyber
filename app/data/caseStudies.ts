@@ -27,7 +27,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Cloudflare tier", value: "Free Tier" },
     ],
     challenge: "Customers refused to provision individual RBAC or federated SSO because engagements often lasted less than two weeks. Five analysts sometimes had to use one admin@client.com account, creating compliance risk, zero visibility and no clear answer to questions like: who deleted the table?",
-    approach: "Cybergaar routed access through Cloudflare Gateway and identity-aware device policies. Even where the destination application still saw a shared customer account, the gateway authenticated the individual employee before forwarding traffic and preserved a secondary audit trail.",
+    approach: "Golden Valley Cyber routed access through Cloudflare Gateway and identity-aware device policies. Even where the destination application still saw a shared customer account, the gateway authenticated the individual employee before forwarding traffic and preserved a secondary audit trail.",
     outcome: "The firm gained practical user-level attribution, safer third-party access sharing, better observability across applications and a lower-cost path to compliance evidence without forcing every customer to redesign their identity stack.",
     challengePoints: [
       { title: "Shared Credentials", detail: "Customers would not create individual accounts or enable SSO for short engagements, so analysts were pushed toward shared logins." },
@@ -56,7 +56,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Video jitter reduction", value: "40%" },
     ],
     challenge: "The network had been set up years earlier by a departed contractor. Passwords were lost, shadow devices had been added without oversight, and video conferencing traffic competed with low-priority traffic during stakeholder meetings.",
-    approach: "Cybergaar performed a controlled network assessment, recovered router access through ROMMON, scanned for unknown devices, hardened legacy services and configured QoS/load balancing around business-critical traffic.",
+    approach: "Golden Valley Cyber performed a controlled network assessment, recovered router access through ROMMON, scanned for unknown devices, hardened legacy services and configured QoS/load balancing around business-critical traffic.",
     outcome: "The client regained administrative control, removed unmanaged devices, reduced video jitter and received a practical hardening plan for end-of-life equipment until budget was available for replacement.",
     challengePoints: [
       { title: "Gap in Security", detail: "The infrastructure had never been reviewed for security because the original vendor focused only on connectivity." },
@@ -85,7 +85,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Evidence model", value: "Reusable" },
     ],
     challenge: "AI features had been added quickly across the product without a consistent register of use cases, model risks, access paths or evidence needed for customer reviews and future ISO 42001 alignment.",
-    approach: "Cybergaar mapped AI use cases, reviewed data flows, aligned control expectations to ISO 42001 themes and built a lightweight governance workflow for risk ownership, logging, approvals and periodic review.",
+    approach: "Golden Valley Cyber mapped AI use cases, reviewed data flows, aligned control expectations to ISO 42001 themes and built a lightweight governance workflow for risk ownership, logging, approvals and periodic review.",
     outcome: "The SaaS provider gained a structured AI governance backlog, clearer ownership for model and data risk, and a reusable evidence model for enterprise customers asking about AI security and compliance.",
     challengePoints: [
       { title: "Shadow AI Usage", detail: "Teams were using AI-enabled tooling without one consolidated register or approval workflow." },
@@ -115,7 +115,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Recovery focus", value: "Root cause" },
     ],
     challenge: "A factory experienced ransomware on a server and needed to understand the original entry point before bringing systems back into normal operation. The environment included SAP, thin clients, IP cameras, HMI systems and IP printers, so recovery had to consider both business systems and operational technology.",
-    approach: "Cybergaar preserved evidence, reviewed affected servers, checked persistence mechanisms, investigated authentication and remote-access paths, validated whether malware remained in the environment and prioritised containment before restoration.",
+    approach: "Golden Valley Cyber preserved evidence, reviewed affected servers, checked persistence mechanisms, investigated authentication and remote-access paths, validated whether malware remained in the environment and prioritised containment before restoration.",
     outcome: "The client received a clear root-cause narrative, a practical remediation plan and a safer recovery path that reduced the chance of reinfection across factory IT and connected operational devices.",
     challengePoints: [
       { title: "Mixed IT and OT estate", detail: "The incident affected a factory environment where SAP and servers sat close to thin clients, HMI systems, cameras and printers." },

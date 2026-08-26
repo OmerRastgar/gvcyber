@@ -15,10 +15,25 @@ export async function generateMetadata({ params }: ExpertSuggestionPageProps): P
   const post = getExpertSuggestion(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | Cybergaar Expert Suggestions`,
+    title: `${post.title} | Golden Valley Cyber Expert Suggestions`,
     description: post.summary,
-    keywords: [post.category, "Cybergaar", "security implementation", "application security", "ISO audit", "vulnerability scanning", "penetration testing"],
+    keywords: [post.category, "Golden Valley Cyber", "security implementation", "application security", "ISO audit", "vulnerability scanning", "penetration testing"],
     alternates: { canonical: `/expert-suggestions/${post.slug}` },
+    openGraph: {
+      title: `${post.title} | Golden Valley Cyber Expert Suggestions`,
+      description: post.summary,
+      url: post.externalUrl ?? `https://gvcyber.com/expert-suggestions/${post.slug}`,
+      siteName: "Golden Valley Cyber",
+      locale: "en_GB",
+      type: "article",
+      images: [{ url: "/og.png", width: 1672, height: 941, alt: `${post.title} | Golden Valley Cyber` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Golden Valley Cyber Expert Suggestions`,
+      description: post.summary,
+      images: ["/og.png"],
+    },
   };
 }
 
@@ -32,9 +47,9 @@ export default async function ExpertSuggestionDetailPage({ params }: ExpertSugge
     "@type": "BlogPosting",
     headline: post.title,
     description: post.summary,
-    author: { "@type": "Organization", name: "Cybergaar" },
-    publisher: { "@type": "Organization", name: "Cybergaar", url: "https://cybergaar.com" },
-    mainEntityOfPage: post.externalUrl ?? `https://cybergaar.com/expert-suggestions/${post.slug}`,
+    author: { "@type": "Organization", name: "Golden Valley Cyber" },
+    publisher: { "@type": "Organization", name: "Golden Valley Cyber", url: "https://gvcyber.com" },
+    mainEntityOfPage: post.externalUrl ?? `https://gvcyber.com/expert-suggestions/${post.slug}`,
   };
 
   return (
@@ -66,7 +81,7 @@ export default async function ExpertSuggestionDetailPage({ params }: ExpertSugge
         </ol>
       </section>
       <section className="catalog-note">
-        <p>Related Cybergaar services for this suggestion.</p>
+        <p>Related Golden Valley Cyber services for this suggestion.</p>
         <div className="expert-related-links">
           {post.relatedServices.map((service) => <a href={service.href} key={service.href}>{service.label} <span aria-hidden="true">⟶</span></a>)}
         </div>

@@ -3,10 +3,25 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Product Studio | Open-source Compliance Automation | Cybergaar",
-  description: "Cybergaar Product Studio is an open-source compliance automation workspace for ISO 27001, audit evidence, controls, readiness, remediation and MSP delivery.",
+  title: "Product Studio | Open-source Compliance Automation | Golden Valley Cyber",
+  description: "Golden Valley Cyber Product Studio is an open-source compliance automation workspace for ISO 27001, audit evidence, controls, readiness, remediation and MSP delivery.",
   keywords: ["open-source compliance automation", "ISO 27001 automation", "audit evidence", "compliance management", "control mapping", "MSP compliance platform", "security implementation"],
   alternates: { canonical: "/product-studio" },
+  openGraph: {
+    title: "Product Studio | Open-source Compliance Automation | Golden Valley Cyber",
+    description: "Golden Valley Cyber Product Studio is an open-source compliance automation workspace for ISO 27001, audit evidence, controls, readiness, remediation and MSP delivery.",
+    url: "/product-studio",
+    siteName: "Golden Valley Cyber",
+    locale: "en_GB",
+    type: "website",
+    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Product Studio | Golden Valley Cyber" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Product Studio | Golden Valley Cyber",
+    description: "Open-source compliance automation.",
+    images: ["/og.png"],
+  },
 };
 
 const workflow = [
@@ -22,16 +37,16 @@ export default function ProductStudioPage() {
       <SiteHeader />
       <section className="product-hero">
         <div>
-          <p className="eyebrow"><span /> CYBERGAAR PRODUCT STUDIO</p>
+          <p className="eyebrow"><span /> GOLDEN VALLEY CYBER PRODUCT STUDIO</p>
           <h1>The open-source workspace for an entire compliance audit.</h1>
           <p>Move from framework selection to evidence, gaps and remediation in one transparent system—built for security teams, auditors and MSPs.</p>
-          <a href="mailto:hello@cybergaar.com?subject=Product%20Studio">Request early access <span aria-hidden="true">⟶</span></a>
+          <a href="mailto:hello@gvcyber.com?subject=Product%20Studio">Request early access <span aria-hidden="true">⟶</span></a>
         </div>
         <div className="product-console" aria-label="Product Studio workflow preview">
-          <div className="console-top"><span /><span /><span /><b>CYBERGAAR / AUDIT WORKSPACE</b></div>
+          <div className="console-top"><span /><span /><span /><b>GOLDEN VALLEY CYBER / AUDIT WORKSPACE</b></div>
           <div className="console-score"><p>READINESS</p><strong>78%</strong><span>ISO 27001 · 64 of 82 controls ready</span></div>
           <div className="console-bars"><i /><i /><i /><i /><i /></div>
-          <div className="console-status"><span>Evidence ready <b>48</b></span><span>Needs review <b>16</b></span><span>Open gaps <b>18</b></span></div>
+          <div className="console-status"><span className="console-status-ok">Evidence ready <b>48</b></span><span>Needs review <b>16</b></span><span>Open gaps <b>18</b></span></div>
         </div>
       </section>
       <section className="product-workflow">

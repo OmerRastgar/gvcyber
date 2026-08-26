@@ -39,3 +39,14 @@ yarn-error.log*
 /outputs/
 /work/
 /cybergaar-site.tar.gz
+
+# Internal / brand-guide scaffolding (not part of the website build)
+/.commandcode/
+/.qa-brand-guide/
+/deliverables/
+/build_brand_guide.py
+/newbrand.md
+/privacypoilcy.txt
+/CyberGaarGlobe.tsx
+/HomePage.tsx
+/frames/

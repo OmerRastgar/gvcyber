@@ -4,13 +4,12 @@ import { expertSuggestions } from "./data/expertSuggestions";
 import { industries } from "./data/industries";
 import { services } from "./data/services";
 
-const baseUrl = "https://cybergaar.com";
+const baseUrl = "https://gvcyber.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
     "/uk",
-    "/pk",
     "/industries",
     "/services",
     "/services/audits",
@@ -24,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/case-studies",
     "/contact",
     "/careers",
+    "/privacy-policy",
   ];
 
   return [

@@ -77,7 +77,7 @@ export const expertSuggestions: ExpertSuggestion[] = [
       { label: "PCI DSS", href: "/services/pci-dss" },
       { label: "Application security", href: "/services/web-application-penetration-testing" },
     ],
-    externalUrl: "https://www.linkedin.com/pulse/pci-secure-software-requirement-key-management-solution-cybergaar-vp8wf/?trackingId=Gf9YgqauxXJVbdEW%2FLt0BQ%3D%3D",
+    externalUrl: "https://www.linkedin.com/pulse/pci-secure-software-requirement-key-management-solution-gvcyber-vp8wf/?trackingId=Gf9YgqauxXJVbdEW%2FLt0BQ%3D%3D",
   },
   {
     slug: "cisco-network-hardening-audit-checklist",
@@ -95,7 +95,7 @@ export const expertSuggestions: ExpertSuggestion[] = [
       { label: "Network penetration testing", href: "/services/network-penetration-testing" },
       { label: "Network vulnerability scanning", href: "/services/network-vulnerability-scanning" },
     ],
-    externalUrl: "https://medium.com/@cybergaar1/hardening-your-cisco-network-a-complete-security-audit-checklist-4a356c3109d5?postPublishedType=initial",
+    externalUrl: "https://medium.com/@gvcyber/hardening-your-cisco-network-a-complete-security-audit-checklist-4a356c3109d5?postPublishedType=initial",
   },
   {
     slug: "vibe-coder-guide-to-security",
@@ -113,7 +113,7 @@ export const expertSuggestions: ExpertSuggestion[] = [
       { label: "Application security", href: "/services/web-application-penetration-testing" },
       { label: "Web application pentest", href: "/services/web-application-penetration-testing" },
     ],
-    externalUrl: "https://medium.com/@cybergaar1/vibe-coder-guide-to-security-cc7f682d396e?postPublishedType=initial",
+    externalUrl: "https://medium.com/@gvcyber/vibe-coder-guide-to-security-cc7f682d396e?postPublishedType=initial",
   },
 ];
 

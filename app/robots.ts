@@ -20,7 +20,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://cybergaar.com/sitemap.xml",
+    sitemap: "https://gvcyber.com/sitemap.xml",
   };
 }
 

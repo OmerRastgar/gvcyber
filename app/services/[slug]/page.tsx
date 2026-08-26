@@ -17,13 +17,13 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   if (!service) return {};
   const category = categoryContent[service.category];
   return {
-    title: `${service.name} | ${category.label} | Cybergaar`,
-    description: `${service.name} support from Cybergaar for ${service.appliesTo.toLowerCase()}. Includes scoping, assessment, evidence, remediation guidance and clear next steps.`,
+    title: `${service.name} | ${category.label} | Golden Valley Cyber`,
+    description: `${service.name} support from Golden Valley Cyber for ${service.appliesTo.toLowerCase()}. Includes scoping, assessment, evidence, remediation guidance and clear next steps.`,
     keywords: [
       service.name,
       service.shortName ?? service.name,
       category.label,
-      "Cybergaar",
+      "Golden Valley Cyber",
       "security audit",
       "application security",
       "vulnerability scanning",
@@ -32,18 +32,18 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     ],
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
-      title: `${service.name} | ${category.label} | Cybergaar`,
-      description: `${service.name} support from Cybergaar for ${service.appliesTo.toLowerCase()}. Includes scoping, assessment, evidence, remediation guidance and clear next steps.`,
-      url: `https://cybergaar.com/services/${service.slug}`,
-      siteName: "Cybergaar",
-      locale: "en_US",
+      title: `${service.name} | ${category.label} | Golden Valley Cyber`,
+      description: `${service.name} support from Golden Valley Cyber for ${service.appliesTo.toLowerCase()}. Includes scoping, assessment, evidence, remediation guidance and clear next steps.`,
+      url: `https://gvcyber.com/services/${service.slug}`,
+      siteName: "Golden Valley Cyber",
+      locale: "en_GB",
       type: "website",
-      images: [{ url: "/og.png", width: 1672, height: 941, alt: `${service.name} | Cybergaar` }],
+      images: [{ url: "/og.png", width: 1672, height: 941, alt: `${service.name} | Golden Valley Cyber` }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${service.name} | ${category.label} | Cybergaar`,
-      description: `${service.name} support from Cybergaar for ${service.appliesTo.toLowerCase()}.`,
+      title: `${service.name} | ${category.label} | Golden Valley Cyber`,
+      description: `${service.name} support from Golden Valley Cyber for ${service.appliesTo.toLowerCase()}.`,
       images: ["/og.png"],
     },
   };
@@ -60,7 +60,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       {
         "@type": "Service",
         name: service.name,
-        provider: { "@type": "Organization", name: "Cybergaar", url: "https://cybergaar.com" },
+        provider: { "@type": "Organization", name: "Golden Valley Cyber", url: "https://gvcyber.com" },
         serviceType: category.label,
         areaServed: service.region,
         audience: service.appliesTo,
@@ -70,9 +70,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Services", item: "https://cybergaar.com/services" },
-          { "@type": "ListItem", position: 2, name: category.label, item: `https://cybergaar.com/services/${service.category}` },
-          { "@type": "ListItem", position: 3, name: service.name, item: `https://cybergaar.com/services/${service.slug}` },
+          { "@type": "ListItem", position: 1, name: "Services", item: "https://gvcyber.com/services" },
+          { "@type": "ListItem", position: 2, name: category.label, item: `https://gvcyber.com/services/${service.category}` },
+          { "@type": "ListItem", position: 3, name: service.name, item: `https://gvcyber.com/services/${service.slug}` },
         ],
       },
     ],
@@ -120,9 +120,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
       <section className="detail-cta">
         <div><p>START A CONVERSATION</p><h2>Ready to scope your {service.shortName ?? service.name} engagement?</h2></div>
-        <a href="mailto:hello@cybergaar.com">Talk to Cybergaar <span aria-hidden="true">⟶</span></a>
+        <a href="mailto:hello@gvcyber.com">Talk to Golden Valley Cyber <span aria-hidden="true">âŸ¶</span></a>
       </section>
-      <p className="pricing-disclaimer">Indicative planning ranges only. Final pricing depends on the agreed scope, including people, business complexity and technology footprint. Currency conversion notes use rounded planning rates checked on 20 August 2026: 1 USD ≈ £0.74 and 1 USD ≈ PKR 278. Regulatory readiness support is not legal advice.</p>
+      <p className="pricing-disclaimer">Indicative planning ranges only. Final pricing depends on the agreed scope, including people, business complexity and technology footprint. Currency conversion notes use rounded planning rates checked on 20 August 2026: 1 USD â‰ˆ Â£0.74. Regulatory readiness support is not legal advice.</p>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceStructuredData) }} />
       <SiteFooter />
     </main>
