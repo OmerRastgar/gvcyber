@@ -64,21 +64,22 @@ const offers = [
 ];
 
 const trustItems = [
-  { name: "Cubercore", href: "https://cubercore.com/" },
-  { name: "Sakoon", href: "https://sakoon.com.pk/" },
-  { name: "Bluebird Paints", href: "https://bluebirdpaints.com/" },
-  { name: "Meraal", href: "https://www.meraal.me/" },
-  { name: "Stratagem Ventures", href: "https://stratagemven.com/" },
-  { name: "VectraView", href: "https://vectraview.com/" },
-  { name: "MarketLytics", href: "https://marketlytics.com/" },
-  { name: "Zairen", href: "https://zairen.co/" },
-  { name: "ComplyEncrypt", href: "https://complyencrypt.com/" },
-  { name: "Risk Associates", href: "https://riskassociates.com/" },
-  { name: "Yottabyte", href: "https://www.yottabyte.ltd/" },
-  { name: "Socbyte", href: "https://socbyte.ai/" },
-  { name: "Cloudflare", href: "https://www.cloudflare.com/" },
   { name: "Google", href: "https://www.google.com/" },
-  { name: "Microsoft", href: "https://www.microsoft.com/" },
+  { name: "Cloudflare", href: "https://www.cloudflare.com/" },
+  { name: "CyNam", href: "https://cynam.org/" },
+  { name: "Security BSides", href: "https://securitybsides.com/" },
+  { name: "PECB", href: "https://mypecb.com/" },
+  { name: "ISACA", href: "https://www.isaca.org/" },
+  { name: "ISC2", href: "https://www.isc2.org/" },
+  { name: "CQI & IRCA", href: "https://www.quality.org/" },
+  { name: "IASME Consortium", href: "https://iasme.co.uk/" },
+  { name: "UK Cyber Security Council", href: "https://www.ukcybersecuritycouncil.org.uk/" },
+  { name: "National Cybersecurity Authority (NCA)", href: "https://nca.gov.sa/en/" },
+  { name: "Dubai Electronic Security Center (DESC)", href: "https://www.desc.gov.ae/" },
+  { name: "Saudi Central Bank (SAMA)", href: "https://www.sama.gov.sa/" },
+  { name: "OWASP", href: "https://owasp.org/" },
+  { name: "National Cyber Security Centre (NCSC)", href: "https://www.ncsc.gov.uk/" },
+  { name: "University of Oxford", href: "https://www.ox.ac.uk/" },
 ];
 
 const searchServices = [
@@ -177,8 +178,8 @@ export default function Home() {
         </a>
       </section>
 
-      <section className="trust-strip" aria-label="Trusted by customers and partners">
-        <p>TRUSTED BY CUSTOMERS AND PARTNERS</p>
+      <section className="trust-strip" aria-label="Aligned with industry bodies and frameworks">
+        <p>ALIGNED WITH INDUSTRY BODIES &amp; FRAMEWORKS</p>
         <div className="trust-window">
           <div className="trust-track">
             {[...trustItems, ...trustItems].map((item, index) => (
