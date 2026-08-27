@@ -65,9 +65,9 @@ test("renders a complete service detail route", async () => {
   assert.match(html, /Discuss|Talk to Golden Valley Cyber/);
 });
 
-test("keeps the complete 30-service catalogue in one data source", async () => {
+test("keeps the complete 31-service catalogue in one data source", async () => {
   const source = await readFile(new URL("../app/data/services.ts", import.meta.url), "utf8");
-  assert.equal((source.match(/^    slug:/gm) ?? []).length, 30);
+  assert.equal((source.match(/^    slug:/gm) ?? []).length, 31);
   assert.match(source, /category: "audits"/);
   assert.match(source, /category: "vulnerability-scanning"/);
   assert.match(source, /category: "penetration-testing"/);

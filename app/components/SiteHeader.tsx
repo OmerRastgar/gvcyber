@@ -194,7 +194,7 @@ export default function SiteHeader() {
                   <div className="mega-group">
                     <h3><a href="/services/penetration-testing">Penetration testing</a></h3>
                     {renderServiceLinks(pentestLinks)}
-                    <a className="mega-all" href="/services/penetration-testing" onClick={closeMenus}>View all 7 tests <Arrow /></a>
+                    <a className="mega-all" href="/services/penetration-testing" onClick={closeMenus}>View all 8 tests <Arrow /></a>
                   </div>
                 </div>
               </>

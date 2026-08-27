@@ -370,6 +370,16 @@ export const services: Service[] = [
     price: "$2,000 – $6,000+ per device type",
     priceDetails: "Specialist hardware testing can include UART, JTAG and SPI analysis, firmware extraction and reverse engineering. Physical devices are normally shipped to the lab.",
   },
+  {
+    slug: "crest-penetration-testing",
+    category: "penetration-testing",
+    name: "CREST Penetration Testing",
+    appliesTo: "UK organisations and suppliers that need accredited, threat-led penetration testing",
+    region: "United Kingdom",
+    risk: "Tick-box testing can miss the exploitable weaknesses that attackers actually use, leaving systems exposed and compliance claims unsupported.",
+    price: "$1,500 – $8,000+ per engagement",
+    priceDetails: "Threat-led testing across networks, systems, applications and people, with step-by-step remediation guidance and live visibility of findings. Final scope depends on assets, applications and depth of coverage.",
+  },
 ];
 
 export const getServicesByCategory = (category: ServiceCategory) =>
