@@ -928,7 +928,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .expert-article-source a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 
 /* Primary calls to action */
-.site-header a.nav-cta { border: 1px solid var(--ink); border-radius: 999px; padding: 8px 18px; background: var(--ink); color: #fff; }
+.site-header a.nav-cta { border: 1px solid var(--ink); border-radius: 2px; height: auto; align-self: center; padding: 13px 26px; background: var(--ink); color: #fff; }
 .site-header a.nav-cta:hover { background: var(--cyan); color: var(--ink); }
 .hero-cta { display: inline-flex; align-items: center; gap: 14px; margin-top: 28px; padding: 13px 24px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 15px; font-weight: 680; width: fit-content; }
 .hero-cta:hover { background: var(--cyan); color: var(--ink); }
@@ -957,4 +957,9 @@ html[lang="de"] .hero-copy h1 { font-size: clamp(36px, 3.9vw, 62px); hyphens: ma
 html[lang="de"] .hero-copy { min-width: 0; }
 @media (max-width: 600px) {
   html[lang="de"] .hero-copy h1 { font-size: 36px; }
+}
+
+@media (max-width: 900px) {
+  /* In the phone menu the Contact button is a full-width rectangle, not a shrunken centred one. */
+  .site-header a.nav-cta { align-self: stretch; justify-content: center; padding: 16px 26px; }
 }
