@@ -16,12 +16,12 @@ export async function generateMetadata({ params }: ExpertSuggestionPageProps): P
   const post = getExpertSuggestion(slug);
   if (!post) return {};
   return {
-    title: post.title,
+    title: post.seoTitle ?? post.title,
     description: clip(post.summary),
     keywords: [post.category, "Golden Valley Cyber", "security implementation", "application security", "ISO audit", "vulnerability scanning", "penetration testing"],
     alternates: { canonical: `/expert-suggestions/${post.slug}` },
     openGraph: {
-      title: `${post.title} | Golden Valley Cyber Expert Suggestions`,
+      title: `${post.seoTitle ?? post.title} | Golden Valley Cyber`,
       description: clip(post.summary),
       url: `https://gvcyber.com/expert-suggestions/${post.slug}`,
       siteName: "Golden Valley Cyber",
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: ExpertSuggestionPageProps): P
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | Golden Valley Cyber Expert Suggestions`,
+      title: `${post.seoTitle ?? post.title} | Golden Valley Cyber`,
       description: post.summary,
       images: ["/og-gvcyber.png"],
     },

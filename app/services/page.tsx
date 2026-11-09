@@ -4,7 +4,7 @@ import SiteHeader from "../components/SiteHeader";
 import { categoryContent, getServicesByCategory, type ServiceCategory } from "../data/services";
 
 export const metadata: Metadata = {
-  title: "Cybersecurity Services: Audit & Testing",
+  title: "Cybersecurity Audit & Testing Services",
   description: "ISO 27001 implementation, Cyber Essentials, SOC 2, PCI DSS, application security, vulnerability scanning and penetration testing from Golden Valley Cyber.",
   keywords: ["cybersecurity services", "ISO audit", "ISO 27001 implementation", "Cyber Essentials", "SOC 2 readiness", "PCI DSS readiness", "application security", "vulnerability scanning", "penetration testing"],
   alternates: { canonical: "/services" },

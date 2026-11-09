@@ -229,17 +229,20 @@ test("rendered pages have no mojibake, placeholder copy or unevidenced claims", 
   assert.doesNotMatch(source, /PKR/);
 });
 
-test("every service page title fits within 60 characters once the site name is added", async () => {
-  const source = await readFile(new URL("../app/data/services.ts", import.meta.url), "utf8");
-  const slugs = [...source.matchAll(/^    slug: "([^"]+)"/gm)].map((match) => match[1]);
-  assert.equal(slugs.length, 31);
-  for (const slug of slugs) {
-    const html = await (await render(`/services/${slug}`)).text();
-    const title = (html.match(/<title>([^<]*)<\/title>/)?.[1] ?? "").replaceAll("&amp;", "&");
-    assert.ok(title.length > 0 && title.length <= 60, `${slug} title is ${title.length} chars: ${title}`);
+test("every sitemap page has a title within 60 characters", async () => {
+  const xml = await (await render("/sitemap.xml")).text();
+  const paths = [...xml.matchAll(/<loc>https:\/\/gvcyber\.com([^<]*)<\/loc>/g)].map((match) => match[1] || "/");
+  assert.ok(paths.length >= 62, `expected the full sitemap, got ${paths.length}`);
+  const decode = (text) => text.replaceAll("&amp;", "&").replaceAll("&#x27;", "'").replaceAll("&quot;", '"');
+  for (const path of paths) {
+    const html = await (await render(path)).text();
+    const title = decode(html.match(/<title>([^<]*)<\/title>/)?.[1] ?? "");
+    assert.ok(title.length > 0 && title.length <= 60, `${path} title is ${title.length} chars: ${title}`);
+    assert.doesNotMatch(html, /[a-z]K/, `${path} has a lowercase-first UK ("uK")`);
+    const description = decode(html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? "");
+    assert.ok(description.length <= 160, `${path} description is ${description.length} chars`);
+    assert.ok(!description.endsWith("…"), `${path} description is cut mid-sentence: ${description}`);
   }
-  const home = await (await render("/")).text();
-  assert.ok((home.match(/<title>([^<]*)<\/title>/)?.[1] ?? "").replaceAll("&amp;", "&").length <= 60);
 });
 
 test("structured data uses one organisation id, unique breadcrumbs and article dates", async () => {
@@ -273,6 +276,8 @@ test("declares hreflang for the global and UK pages", async () => {
   const ukHtml = await uk.text();
   assert.match(ukHtml, /hreflang="en-GB"|hrefLang="en-GB"/i);
   assert.match(ukHtml, /property="og:url" content="https:\/\/gvcyber\.com\/uk"/);
+  // Reciprocal: each page must reference the other.
+  assert.match(await (await render("/")).text(), /hreflang="en-GB"[^>]*href="https:\/\/gvcyber\.com\/uk"|href="https:\/\/gvcyber\.com\/uk"[^>]*hrefLang="en-GB"|hrefLang="en-GB"[^>]*href="https:\/\/gvcyber\.com\/uk"/i);
 });
 
 test("sends security headers and redirects www to the apex domain", async () => {

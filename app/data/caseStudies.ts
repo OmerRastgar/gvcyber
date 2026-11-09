@@ -1,5 +1,9 @@
 export type CaseStudy = {
   slug: string;
+  /** Short title for <title>/OG (keeps the page title within 60 characters). */
+  seoTitle?: string;
+  /** Hand-written meta description (<=158 chars) when the summary is too long to use. */
+  metaDescription?: string;
   sector: string;
   title: string;
   summary: string;
@@ -17,6 +21,7 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "cloudflare-zero-trust-shared-access",
+    seoTitle: "Zero Trust for Shared Customer Access",
     sector: "Technology",
     title: "Zero Trust controls for shared customer access",
     summary: "A data analytics firm needed rapid access to short-term customer environments without losing accountability when clients only provided shared credentials.",
@@ -46,6 +51,8 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "cisco-router-network-hardening",
+    seoTitle: "Cisco Router Hardening Case Study",
+    metaDescription: "How a professional services firm regained control of a black-box Cisco network, removed ghost devices and stabilised video calls.",
     sector: "Network security",
     title: "Auditing Cisco routers for misconfiguration and legacy risk",
     summary: "A professional services firm regained control of a black-box network, removed ghost devices and improved video stability without replacing all infrastructure immediately.",
@@ -75,6 +82,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "iso-42001-ai-governance-saas",
+    seoTitle: "ISO 42001 AI Governance for SaaS",
     sector: "SaaS",
     title: "AI governance for a SaaS provider using ISO 42001",
     summary: "A SaaS provider needed a practical AI governance baseline that could support customer assurance, application security and future ISO 42001 readiness.",
@@ -104,6 +112,8 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "factory-ransomware-digital-forensics",
+    seoTitle: "Ransomware Forensics in a Factory",
+    metaDescription: "Root-cause analysis, malware validation and safer recovery after ransomware across factory servers, SAP, thin clients, cameras and HMI systems.",
     sector: "Manufacturing",
     title: "Digital forensics after ransomware in a factory environment",
     summary: "A manufacturing site needed root-cause analysis, malware validation and safer recovery across servers, SAP, thin clients, IP cameras, HMI systems and printers.",

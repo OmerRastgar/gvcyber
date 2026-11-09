@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "PCI DSS readiness",
     "SOC 2 readiness",
   ],
-  alternates: { canonical: "/", languages: { "x-default": "/", en: "/" } },
+  alternates: { canonical: "/", languages: { "x-default": "/", en: "/", "en-GB": "/uk" } },
   openGraph: {
     title: "Golden Valley Cyber, Cheltenham UK | ISO 27001 & Pentesting",
     description: "ISO audit support, ISO 27001 implementation, security audits, application security testing, penetration testing and vulnerability scanning.",

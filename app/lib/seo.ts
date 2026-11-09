@@ -1,7 +1,18 @@
-/** Trim a meta description to a SERP-safe length at a word boundary. */
+/**
+ * Trim a meta description to a SERP-safe length. Prefer whole sentences; only
+ * fall back to a word-boundary cut with an ellipsis when the first sentence alone is too long.
+ */
 export function clip(text: string, max = 158): string {
   const clean = text.replace(/\s+/g, " ").trim();
   if (clean.length <= max) return clean;
+  const sentences = clean.match(/[^.!?]+[.!?]+(?:\s|$)/g)?.map((sentence) => sentence.trim()) ?? [];
+  let out = "";
+  for (const sentence of sentences) {
+    const next = out ? `${out} ${sentence}` : sentence;
+    if (next.length > max) break;
+    out = next;
+  }
+  if (out) return out;
   const cut = clean.slice(0, max - 1);
   return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:.\-\s]+$/, "")}…`;
 }

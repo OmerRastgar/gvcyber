@@ -21,7 +21,9 @@ const lead: Record<string, (name: string, appliesTo: string) => string> = {
 
 function describe(service: { name: string; appliesTo: string; risk: string; category: string }, label: string) {
   const intro = (lead[service.category] ?? ((n: string) => `${n} from Golden Valley Cyber.`))(service.name, service.appliesTo);
-  return clip(`${intro} ${service.risk}`) || label;
+  // Prefer complete sentences: intro + risk, then intro alone, then a short name + risk form.
+  const candidates = [`${intro} ${service.risk}`, intro, `${service.name} from Golden Valley Cyber. ${service.risk}`, `${service.name} from Golden Valley Cyber, Cheltenham UK.`];
+  return candidates.find((text) => text.length <= 158) ?? (clip(intro) || label);
 }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {

@@ -5,6 +5,8 @@ export type ExpertSuggestionSection = {
 
 export type ExpertSuggestion = {
   slug: string;
+  /** Short title for <title>/OG (keeps the page title within 60 characters). */
+  seoTitle?: string;
   title: string;
   summary: string;
   category: string;
@@ -29,6 +31,7 @@ export type ExpertSuggestion = {
 const rawSuggestions: Omit<ExpertSuggestion, "readingTime" | "published" | "updated">[] = [
   {
     slug: "iso-27001-readiness-before-certification",
+    seoTitle: "ISO 27001 Certification Audit Prep",
     title: "What to prepare before an ISO 27001 certification audit",
     summary: "A practical readiness checklist for teams that want fewer surprises before formal ISO 27001 assessment.",
     category: "ISO audit",
@@ -76,6 +79,7 @@ const rawSuggestions: Omit<ExpertSuggestion, "readingTime" | "published" | "upda
   },
   {
     slug: "vulnerability-scanning-without-noise",
+    seoTitle: "Vulnerability Scanning Without Noise",
     title: "How to make vulnerability scanning useful instead of noisy",
     summary: "Scanning only helps when assets, credentials, validation and remediation ownership are handled properly.",
     category: "Vulnerability scanning",
@@ -119,6 +123,7 @@ const rawSuggestions: Omit<ExpertSuggestion, "readingTime" | "published" | "upda
   },
   {
     slug: "pci-secure-software-key-management",
+    seoTitle: "PCI Secure Software Key Management",
     title: "PCI secure software requirements and key management",
     summary: "What the PCI Secure Software Framework expects from cryptography and key lifecycle management, and where engineering teams still carry the responsibility.",
     category: "PCI DSS",
@@ -164,6 +169,7 @@ const rawSuggestions: Omit<ExpertSuggestion, "readingTime" | "published" | "upda
   },
   {
     slug: "cisco-network-hardening-audit-checklist",
+    seoTitle: "Cisco Network Hardening Checklist",
     title: "Hardening your Cisco network: a security audit checklist",
     summary: "A baseline set of Cisco IOS checks for disabling legacy services, locking down management access, and verifying interface, routing and logging configuration.",
     category: "Network security",
@@ -209,6 +215,7 @@ const rawSuggestions: Omit<ExpertSuggestion, "readingTime" | "published" | "upda
   },
   {
     slug: "vibe-coder-guide-to-security",
+    seoTitle: "Vibe Coder's Guide to Security",
     title: "A vibe coder's guide to security",
     summary: "A practical guide for developers using AI assistants to identify, verify and fix common security issues before they ship.",
     category: "Application security",

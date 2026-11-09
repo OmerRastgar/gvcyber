@@ -6,7 +6,7 @@ import { clip } from "../lib/seo";
 const regionContent: Record<string, { name: string; description: string }> = {
   uk: {
     name: "United Kingdom",
-    description: "Golden Valley Cyber in Cheltenham, UK: Cyber Essentials, ISO 27001 and GDPR readiness, CREST-aligned penetration testing and vulnerability scanning for UK organisations.",
+    description: "Cheltenham-based cyber security for UK organisations: Cyber Essentials, ISO 27001, GDPR readiness, penetration testing and vulnerability scanning.",
   },
 };
 
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: RegionPageProps): Promise<Met
   const content = regionContent[region];
   if (!content) return {};
   return {
-    title: { absolute: "UK Cyber Security Consultancy, Cheltenham | Golden Valley Cyber" },
+    title: { absolute: "UK Cyber Security Consultancy | Golden Valley Cyber" },
     description: clip(content.description),
     keywords: [
       "ISO audit",
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: RegionPageProps): Promise<Met
       "penetration testing",
       content.name,
     ],
-    alternates: { canonical: `/${region}`, languages: { "en-GB": `/${region}`, "x-default": "/" } },
+    alternates: { canonical: `/${region}`, languages: { "x-default": "/", en: "/", "en-GB": `/${region}` } },
     openGraph: {
       title: "UK Cyber Security Consultancy, Cheltenham | Golden Valley Cyber",
       description: clip(content.description),

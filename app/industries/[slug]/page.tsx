@@ -23,12 +23,12 @@ export async function generateMetadata({ params }: IndustryPageProps): Promise<M
   const industry = getIndustry(slug);
   if (!industry) return {};
   return {
-    title: `${industry.title} Cyber Security Services`,
+    title: `${industry.title} Cyber Security`,
     description: clip(`${industry.summary} Audits, scanning and testing for ${industry.title.toLowerCase()} from Golden Valley Cyber, Cheltenham UK.`),
     keywords: [industry.title, "security audits", "vulnerability scanning", "penetration testing", "application security", "ISO 27001", "Golden Valley Cyber"],
     alternates: { canonical: `/industries/${industry.slug}` },
     openGraph: {
-      title: `${industry.title} Cyber Security Services | Golden Valley Cyber`,
+      title: `${industry.title} Cyber Security | Golden Valley Cyber`,
       description: clip(industry.summary),
       url: `/industries/${industry.slug}`,
       siteName: "Golden Valley Cyber",
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: IndustryPageProps): Promise<M
       type: "website",
       images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: `${industry.title} cyber security | Golden Valley Cyber` }],
     },
-    twitter: { card: "summary_large_image", title: `${industry.title} Cyber Security Services`, description: clip(industry.summary, 120), images: ["/og-gvcyber.png"] },
+    twitter: { card: "summary_large_image", title: `${industry.title} Cyber Security`, description: clip(industry.summary, 120), images: ["/og-gvcyber.png"] },
   };
 }
 
