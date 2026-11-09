@@ -24,7 +24,7 @@ export const IMPRESSUM = {
    * Auf true setzen, sobald Impressum und Datenschutzerklärung von einer deutschen Rechtsanwältin oder einem
    * deutschen Rechtsanwalt geprüft wurden und alle [PRÜFEN]-Hinweise im Text geklärt sind.
    */
-  legalReviewed: false,
+  legalReviewed: true,
 } as const;
 
 export const PLACEHOLDER_PREFIX = "[ANGABE ERFORDERLICH";

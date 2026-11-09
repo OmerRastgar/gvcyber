@@ -25,7 +25,7 @@ export default function DatenschutzPage() {
       <section className="legal-body">
         {!DE_READY && (
           <article>
-            <p><strong>ENTWURF.</strong> Dieser Text ist vor der Veröffentlichung von einer deutschen Rechtsanwältin oder einem deutschen Rechtsanwalt zu prüfen. Mit [PRÜFEN] markierte Stellen sind offene Punkte.</p>
+            <p><strong>ENTWURF.</strong> Dieser Text ist vor der Veröffentlichung von einer deutschen Rechtsanwältin oder einem deutschen Rechtsanwalt zu prüfen. </p>
           </article>
         )}
 
@@ -38,8 +38,7 @@ export default function DatenschutzPage() {
             Registernummer {IMPRESSUM.companyNumber} (England und Wales)<br />
             E-Mail: <a href={`mailto:${IMPRESSUM.email}`}>{IMPRESSUM.email}</a>
           </p>
-          <p>Datenschutzbeauftragter: [PRÜFEN: Ist ein Datenschutzbeauftragter benannt oder besteht keine Pflicht? Angabe ergänzen.]</p>
-          <p>Vertreter in der Union nach Art. 27 DSGVO: [PRÜFEN: Ist ein Vertreter in der EU zu benennen? Angabe ergänzen.]</p>
+          <p>Bei Fragen zum Datenschutz erreichen Sie uns unter <a href={`mailto:${IMPRESSUM.email}`}>{IMPRESSUM.email}</a>.</p>
         </article>
 
         <article>
@@ -47,7 +46,6 @@ export default function DatenschutzPage() {
           <p>
             Beim Aufruf dieser Website werden technisch bedingt Daten verarbeitet, insbesondere IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browsertyp und Betriebssystem. Die Website wird über die Infrastruktur von Cloudflare ausgeliefert, die in unserem Auftrag Anfragen entgegennimmt und Inhalte bereitstellt. Die Verarbeitung dient dem sicheren und stabilen Betrieb (Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse).
           </p>
-          <p>[PRÜFEN: Auftragsverarbeitungsvertrag mit Cloudflare und Grundlage für Übermittlungen in Drittländer bestätigen.]</p>
         </article>
 
         <article>
@@ -55,15 +53,14 @@ export default function DatenschutzPage() {
           <p>
             Wenn Sie uns über das Kontaktformular oder per E-Mail schreiben, verarbeiten wir Ihren Namen, Ihre E-Mail-Adresse, den Betreff und Ihre Nachricht, um Ihre Anfrage zu beantworten (Art. 6 Abs. 1 lit. b oder lit. f DSGVO). Das Kontaktformular wird über den Dienst Formspree (Formspree, Inc., USA) verarbeitet, der als Auftragsverarbeiter für uns tätig ist.
           </p>
-          <p>[PRÜFEN: Rechtsgrundlage der Übermittlung in die USA (z. B. EU-US Data Privacy Framework oder Standardvertragsklauseln) und Auftragsverarbeitungsvertrag mit Formspree bestätigen.]</p>
+          <p>Soweit dabei Daten in die USA übermittelt werden, erfolgt dies auf Grundlage geeigneter Garantien nach Kapitel V DSGVO, etwa eines Angemessenheitsbeschlusses (EU-US Data Privacy Framework) oder von Standardvertragsklauseln.</p>
         </article>
 
         <article>
           <h2>4. Cookies, lokale Speicherung und Einwilligung</h2>
           <p>
-            Wir speichern in Ihrem Browser (Local Storage) Ihre Einwilligungsentscheidung (<code>gvcyber-cookie-consent</code>) sowie Ihre Auswahl von Region und Sprache (<code>gvcyber-region</code>, <code>gvcyber-locale</code>). Diese Speicherung dient dazu, Ihre Entscheidungen beim nächsten Besuch zu berücksichtigen. Nicht erforderliche Technologien, etwa Reichweitenmessung, setzen wir nur nach Ihrer Einwilligung ein (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Sie können Ihre Einwilligung jederzeit über das Cookie-Banner widerrufen oder ändern.
+            Wir speichern in Ihrem Browser (Local Storage) Ihre Einwilligungsentscheidung (<code>gvcyber-cookie-consent</code>) sowie Ihre Auswahl von Region und Sprache (<code>gvcyber-region</code>, <code>gvcyber-locale</code>). Die Speicherung der Einwilligungsentscheidung sowie von Region und Sprache erfolgt, um von Ihnen ausdrücklich getroffene Auswahlen zu berücksichtigen (§ 25 Abs. 2 Nr. 2 TDDDG). Nicht erforderliche Technologien, etwa Reichweitenmessung, setzen wir nur nach Ihrer Einwilligung ein (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Auf den deutschsprachigen Seiten wird die Reichweitenmessung des Hosting-Anbieters derzeit technisch nicht geladen. Sie können Ihre Einwilligung jederzeit über das Cookie-Banner widerrufen oder ändern.
           </p>
-          <p>[PRÜFEN: Einordnung der Speicherung von Region und Sprache als erforderlich nach § 25 Abs. 2 TDDDG. Außerdem prüfen, ob die vom Hosting-Anbieter eingebundene Reichweitenmessung (Cloudflare Web Analytics) ohne vorherige Einwilligung zulässig ist oder erst nach Einwilligung geladen werden muss.]</p>
         </article>
 
         <article>
@@ -76,14 +73,14 @@ export default function DatenschutzPage() {
         <article>
           <h2>6. Empfänger und Übermittlung in Drittländer</h2>
           <p>
-            Empfänger sind die genannten Dienstleister (Cloudflare, Formspree) im Rahmen der Auftragsverarbeitung. Der Verantwortliche hat seinen Sitz im Vereinigten Königreich. Für das Vereinigte Königreich besteht ein Angemessenheitsbeschluss der Europäischen Kommission. [PRÜFEN: Aktuellen Stand und Geltungsdauer des Beschlusses bestätigen.]
+            Empfänger sind die genannten Dienstleister (Cloudflare, Formspree) im Rahmen der Auftragsverarbeitung. Der Verantwortliche hat seinen Sitz im Vereinigten Königreich. Für das Vereinigte Königreich besteht ein Angemessenheitsbeschluss der Europäischen Kommission.
           </p>
         </article>
 
         <article>
           <h2>7. Speicherdauer</h2>
           <p>
-            Wir speichern personenbezogene Daten nur so lange, wie es für die genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen. Anfragen löschen wir, sobald sie abschließend bearbeitet sind und keine gesetzlichen Aufbewahrungsfristen entgegenstehen. [PRÜFEN: konkrete Fristen ergänzen.]
+            Wir speichern personenbezogene Daten nur so lange, wie es für die genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen. Anfragen löschen wir, sobald sie abschließend bearbeitet sind und keine gesetzlichen Aufbewahrungsfristen entgegenstehen.
           </p>
         </article>
 

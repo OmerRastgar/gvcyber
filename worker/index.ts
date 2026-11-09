@@ -57,6 +57,18 @@ function withSecurityHeaders(request: Request, response: Response): Response {
   const headers = new Headers(response.headers);
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) headers.set(name, value);
 
+  // German pages: the zone-injected analytics beacon is not allowed to load (the privacy policy says
+  // measurement only happens with consent, and nothing loads it after consent).
+  const { pathname: requestPath } = new URL(request.url);
+  if (requestPath === "/de" || requestPath.startsWith("/de/")) {
+    headers.set(
+      "Content-Security-Policy",
+      SECURITY_HEADERS["Content-Security-Policy"]
+        .replace(" https://static.cloudflareinsights.com", "")
+        .replace(" https://cloudflareinsights.com", ""),
+    );
+  }
+
   const { pathname } = new URL(request.url);
   const isStaticImage = LONG_CACHE_FILES.includes(pathname) || LONG_CACHE_PREFIXES.some((prefix) => pathname.startsWith(prefix));
   if (isStaticImage && response.ok) headers.set("Cache-Control", "public, max-age=2592000");

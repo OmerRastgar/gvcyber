@@ -438,3 +438,19 @@ test("language suggestion endpoint returns a country hint and sets no cookie", a
   const none = await render("/_geo");
   assert.equal((await none.json()).country, null);
 });
+
+test("published German pages carry no open legal markers and no analytics beacon allowance", async () => {
+  for (const path of ["/de", "/de/impressum", "/de/datenschutz", "/de/services/tisax"]) {
+    const response = await render(path);
+    const html = await response.text();
+    assert.doesNotMatch(html, /\[PRÜFEN|\[ANGABE ERFORDERLICH|ENTWURF/, `${path} still has draft markers`);
+    const csp = response.headers.get("content-security-policy") ?? "";
+    assert.doesNotMatch(csp, /cloudflareinsights/, `${path} must not allow the analytics beacon`);
+  }
+  // English pages keep the beacon allowance.
+  assert.match((await render("/")).headers.get("content-security-policy") ?? "", /static\.cloudflareinsights\.com/);
+  const impressum = deDecode(await (await render("/de/impressum")).text());
+  assert.match(impressum, /Muhammad Ehtasham Sarwar/);
+  assert.match(impressum, /\+44 7359 948129/);
+  assert.match(impressum, /Umsatzsteuer-Identifikationsnummer[^.]*nicht vor/);
+});
