@@ -3,6 +3,8 @@ import { caseStudies } from "./data/caseStudies";
 import { expertSuggestions } from "./data/expertSuggestions";
 import { industries } from "./data/industries";
 import { services } from "./data/services";
+import { deServices } from "./data/de/services";
+import { DE_READY } from "./data/de/company";
 
 const baseUrl = "https://gvcyber.com";
 // Fixed date: a fresh `new Date()` on every build tells crawlers every page changed daily.
@@ -29,7 +31,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy-policy",
   ];
 
+  // German pages are only listed once the Impressum is complete and the legal review is confirmed.
+  const germanRoutes = DE_READY
+    ? [
+        "/de",
+        "/de/services",
+        "/de/services/audits",
+        "/de/services/vulnerability-scanning",
+        "/de/services/penetration-testing",
+        "/de/contact",
+        "/de/impressum",
+        "/de/datenschutz",
+        ...deServices.map((service) => `/de/services/${service.slug}`),
+      ]
+    : [];
+
   return [
+    ...germanRoutes.map((route) => ({ url: `${baseUrl}${route}`, lastModified })),
     ...staticRoutes.map((route) => ({ url: `${baseUrl}${route}`, lastModified })),
     ...industries.map((industry) => ({ url: `${baseUrl}/industries/${industry.slug}`, lastModified })),
     ...expertSuggestions.map((post) => ({ url: `${baseUrl}/expert-suggestions/${post.slug}`, lastModified: new Date(post.updated) })),

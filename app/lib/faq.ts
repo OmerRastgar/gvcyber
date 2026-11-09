@@ -1,3 +1,4 @@
+import { lowerFirst } from "./seo";
 import type { Service } from "../data/services";
 
 export type Faq = { question: string; answer: string };
@@ -12,7 +13,7 @@ export function buildServiceFaqs(service: Service): Faq[] {
   const faqs: Faq[] = [
     {
       question: `Who is ${service.name} for?`,
-      answer: `${service.name} is built for ${service.appliesTo.charAt(0).toLowerCase()}${service.appliesTo.slice(1)}. It is delivered by Golden Valley Cyber, a cyber security consultancy based in Cheltenham, UK, and applies to ${service.region === "Global" ? "organisations in any region" : service.region.toLowerCase() === "united kingdom" ? "organisations in the United Kingdom" : `organisations in ${service.region}`}.`,
+      answer: `${service.name} is built for ${lowerFirst(service.appliesTo)}. It is delivered by Golden Valley Cyber, a cyber security consultancy based in Cheltenham, UK, and applies to ${service.region === "Global" ? "organisations in any region" : service.region.toLowerCase() === "united kingdom" ? "organisations in the United Kingdom" : `organisations in ${service.region}`}.`,
     },
     {
       question: `What risk does ${service.name} address?`,

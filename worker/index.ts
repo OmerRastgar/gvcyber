@@ -57,6 +57,18 @@ function withSecurityHeaders(request: Request, response: Response): Response {
   const headers = new Headers(response.headers);
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) headers.set(name, value);
 
+  // German pages: the zone-injected analytics beacon is not allowed to load (the privacy policy says
+  // measurement only happens with consent, and nothing loads it after consent).
+  const { pathname: requestPath } = new URL(request.url);
+  if (requestPath === "/de" || requestPath.startsWith("/de/")) {
+    headers.set(
+      "Content-Security-Policy",
+      SECURITY_HEADERS["Content-Security-Policy"]
+        .replace(" https://static.cloudflareinsights.com", "")
+        .replace(" https://cloudflareinsights.com", ""),
+    );
+  }
+
   const { pathname } = new URL(request.url);
   const isStaticImage = LONG_CACHE_FILES.includes(pathname) || LONG_CACHE_PREFIXES.some((prefix) => pathname.startsWith(prefix));
   if (isStaticImage && response.ok) headers.set("Cache-Control", "public, max-age=2592000");
@@ -75,6 +87,13 @@ const worker = {
       return Response.redirect(url.toString(), 301);
     }
 
+    // Country hint for the language suggestion banner. Not cached, sets no cookie, and pages never vary on it,
+    // so crawlers always receive identical HTML.
+    if (url.pathname === "/_geo") {
+      const country = (request as Request & { cf?: { country?: string } }).cf?.country ?? request.headers.get("cf-ipcountry") ?? null;
+      return withSecurityHeaders(request, new Response(JSON.stringify({ country }), { headers: { "content-type": "application/json", "cache-control": "no-store" } }));
+    }
+
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
       return withSecurityHeaders(request, await handleImageOptimization(request, {
@@ -86,7 +105,10 @@ const worker = {
       }, allowedWidths));
     }
 
-    return withSecurityHeaders(request, await handler.fetch(request, env, ctx));
+    // Tell the app which locale a path belongs to so the root layout can set <html lang>.
+    const isGerman = url.pathname === "/de" || url.pathname.startsWith("/de/");
+    const forwarded = isGerman ? new Request(request, { headers: new Headers([...request.headers, ["x-locale", "de"]]) }) : request;
+    return withSecurityHeaders(request, await handler.fetch(forwarded, env, ctx));
   },
 };
 

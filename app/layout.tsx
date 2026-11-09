@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Inter } from "next/font/google";
 import CookieConsent from "./components/CookieConsent";
+import LocaleSuggestion from "./components/LocaleSuggestion";
+import { DE_READY } from "./data/de/company";
 import "./globals.css";
 
 const inter = Inter({
@@ -90,11 +93,14 @@ const siteStructuredData = {
   ],
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  // The Worker sets x-locale for /de routes so <html lang> is correct in the server-rendered HTML.
+  const locale = (await headers()).get("x-locale") === "de" ? "de" : "en-GB";
   return (
-    <html lang="en-GB">
+    <html lang={locale}>
       <body className={inter.variable}>
         {children}
+        <LocaleSuggestion enabled={DE_READY} />
         <CookieConsent />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteStructuredData) }} />
       </body>

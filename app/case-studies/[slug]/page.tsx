@@ -14,13 +14,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
   const study = getCaseStudy((await params).slug);
   return study ? {
-    title: `${study.title} | Security Case Study`,
-    description: clip(study.summary),
+    title: study.seoTitle ?? study.title,
+    description: study.metaDescription ?? clip(study.summary),
     keywords: [study.sector, "security case study", "cybersecurity case study", "security assessment", "vulnerability scanning", "penetration testing", "security audit", ...(study.tags ?? [])],
     alternates: { canonical: `/case-studies/${study.slug}` },
     openGraph: {
-      title: `${study.title} | Security Case Study | Golden Valley Cyber`,
-      description: clip(study.summary),
+      title: `${study.seoTitle ?? study.title} | Golden Valley Cyber`,
+      description: study.metaDescription ?? clip(study.summary),
       url: `https://gvcyber.com/case-studies/${study.slug}`,
       siteName: "Golden Valley Cyber",
       locale: "en_GB",
@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
     },
     twitter: {
       card: "summary_large_image",
-      title: `${study.title} | Security Case Study | Golden Valley Cyber`,
-      description: `${study.summary}`,
+      title: `${study.seoTitle ?? study.title} | Golden Valley Cyber`,
+      description: clip(study.summary, 150),
       images: ["/og-gvcyber.png"],
     },
   } : {};

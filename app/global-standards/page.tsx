@@ -5,7 +5,7 @@ import SiteHeader from "../components/SiteHeader";
 import { globeCountries } from "../data/globeStandards";
 
 export const metadata: Metadata = {
-  title: "Global Cyber Security Standards Explorer",
+  title: "Global Cyber Security Standards",
   description: "Explore cyber security standards by region, including ISO 27001, Cyber Essentials, SOC 2, PCI DSS, GDPR, NIST, HIPAA, DORA and NIS2.",
   keywords: [
     "ISO 27001",

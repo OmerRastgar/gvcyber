@@ -38,8 +38,10 @@ export default function CookieConsent() {
   const [consent, setConsent] = useState<Consent | null>(null);
   const [manageOpen, setManageOpen] = useState(false);
   const [draft, setDraft] = useState<Consent>(DEFAULT_CONSENT);
+  const [de, setDe] = useState(false);
 
   useEffect(() => {
+    setDe(window.location.pathname === "/de" || window.location.pathname.startsWith("/de/"));
     setConsent(readStoredConsent());
     setMounted(true);
   }, []);
@@ -82,27 +84,28 @@ export default function CookieConsent() {
   };
 
   return (
-    <div className="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+    <div className="cookie-banner" role="dialog" aria-label={de ? "Cookie-Einwilligung" : "Cookie consent"} aria-live="polite">
       <div className="cookie-banner-inner">
         <p className="cookie-banner-copy">
-          We use cookies for security, analytics and to remember your preferences.
-          Choose &ldquo;Accept all&rdquo;, or &ldquo;Manage cookies&rdquo; to opt out.
+          {de
+            ? <>Wir verwenden Cookies und ähnliche Technologien für Sicherheit, Analyse und um Ihre Einstellungen zu speichern. Sie können alle ablehnen, alle akzeptieren oder Ihre Auswahl selbst treffen. Mehr dazu in der <a href="/de/datenschutz">Datenschutzerklärung</a>.</>
+            : <>We use cookies for security, analytics and to remember your preferences. Choose &ldquo;Accept all&rdquo;, or &ldquo;Manage cookies&rdquo; to opt out.</>}
         </p>
 
         {manageOpen ? (
           <div className="cookie-preferences">
             <div className="cookie-preference">
               <div className="cookie-preference-copy">
-                <strong>Strictly necessary</strong>
-                <span>Required for the site to function securely.</span>
+                <strong>{de ? "Unbedingt erforderlich" : "Strictly necessary"}</strong>
+                <span>{de ? "Für den sicheren Betrieb der Website erforderlich." : "Required for the site to function securely."}</span>
               </div>
-              <span className="cookie-always-on">Always on</span>
+              <span className="cookie-always-on">{de ? "Immer aktiv" : "Always on"}</span>
             </div>
 
             <div className="cookie-preference">
               <div className="cookie-preference-copy">
-                <strong>Analytics</strong>
-                <span>Help us understand how the site is used so we can improve it.</span>
+                <strong>{de ? "Analyse" : "Analytics"}</strong>
+                <span>{de ? "Hilft uns zu verstehen, wie die Website genutzt wird, damit wir sie verbessern können." : "Help us understand how the site is used so we can improve it."}</span>
               </div>
               <button
                 type="button"
@@ -117,8 +120,8 @@ export default function CookieConsent() {
 
             <div className="cookie-preference">
               <div className="cookie-preference-copy">
-                <strong>Customisation</strong>
-                <span>Remember choices such as your preferred region.</span>
+                <strong>{de ? "Personalisierung" : "Customisation"}</strong>
+                <span>{de ? "Speichert Auswahlen wie Ihre bevorzugte Region oder Sprache." : "Remember choices such as your preferred region."}</span>
               </div>
               <button
                 type="button"
@@ -132,15 +135,16 @@ export default function CookieConsent() {
             </div>
 
             <div className="cookie-banner-actions">
-              <button type="button" className="cookie-button cookie-button-secondary" onClick={rejectAll}>Reject all</button>
-              <button type="button" className="cookie-button cookie-button-secondary" onClick={savePreferences}>Save preferences</button>
-              <button type="button" className="cookie-button cookie-button-primary" onClick={acceptAll}>Accept all</button>
+              <button type="button" className="cookie-button cookie-button-secondary" onClick={rejectAll}>{de ? "Alle ablehnen" : "Reject all"}</button>
+              <button type="button" className="cookie-button cookie-button-secondary" onClick={savePreferences}>{de ? "Auswahl speichern" : "Save preferences"}</button>
+              <button type="button" className="cookie-button cookie-button-primary" onClick={acceptAll}>{de ? "Alle akzeptieren" : "Accept all"}</button>
             </div>
           </div>
         ) : (
           <div className="cookie-banner-actions">
-            <button type="button" className="cookie-button cookie-button-secondary" onClick={openManage}>Manage cookies</button>
-            <button type="button" className="cookie-button cookie-button-primary" onClick={acceptAll}>Accept all</button>
+            {de && <button type="button" className="cookie-button cookie-button-secondary" onClick={rejectAll}>Alle ablehnen</button>}
+            <button type="button" className="cookie-button cookie-button-secondary" onClick={openManage}>{de ? "Einstellungen" : "Manage cookies"}</button>
+            <button type="button" className="cookie-button cookie-button-primary" onClick={acceptAll}>{de ? "Alle akzeptieren" : "Accept all"}</button>
           </div>
         )}
       </div>
