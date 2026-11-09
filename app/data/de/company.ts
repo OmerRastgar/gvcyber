@@ -11,13 +11,13 @@ export const IMPRESSUM = {
   addressLines: ["Frogmore House", "6 Ormond Place", "Cheltenham, GL50 1JD", "Vereinigtes Königreich"],
   email: "hello@gvcyber.com",
   /** Telefonnummer (zweiter schneller Kontaktweg neben der E-Mail). */
-  phone: "",
+  phone: "+44 7359 948129",
   /** Vertretungsberechtigte (Directors), z. B. "Max Mustermann (Director)". */
   directors: "Muhammad Ehtasham Sarwar (Director)",
   /** Umsatzsteuer-Identifikationsnummer nach Paragraph 27a UStG, falls vorhanden. */
   vatId: "",
   /** Auf true setzen, wenn bewusst keine USt-IdNr. vorhanden ist (dann wird ein entsprechender Hinweis angezeigt). */
-  vatIdNotApplicable: false,
+  vatIdNotApplicable: true,
   /** Verantwortlich für Inhalte nach Paragraph 18 Abs. 2 MStV (Name und Anschrift). */
   contentResponsible: "Muhammad Ehtasham Sarwar, Frogmore House, 6 Ormond Place, Cheltenham, GL50 1JD, Vereinigtes Königreich",
   /**
