@@ -454,3 +454,10 @@ test("published German pages carry no open legal markers and no analytics beacon
   assert.match(impressum, /\+44 7359 948129/);
   assert.match(impressum, /Umsatzsteuer-Identifikationsnummer[^.]*nicht vor/);
 });
+
+test("responses identify the build they were produced from", async () => {
+  for (const path of ["/", "/de", "/_geo"]) {
+    const build = (await render(path)).headers.get("x-build") ?? "";
+    assert.match(build, /^([0-9a-f]{7}(-dirty)?|unknown)$/, `${path} x-build is "${build}"`);
+  }
+});

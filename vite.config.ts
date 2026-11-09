@@ -1,3 +1,4 @@
+import { execSync } from "node:child_process";
 import vinext from "vinext";
 import { defineConfig } from "vite";
 import hostingConfig from "./.openai/hosting.json";
@@ -7,6 +8,19 @@ const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   "00000000-0000-4000-8000-000000000000";
 
 const { d1, r2 } = hostingConfig;
+
+// Identifies which commit a deployment was built from (exposed as the x-build response header).
+function buildId(): string {
+  const fromEnv = process.env.BUILD_ID ?? process.env.GITHUB_SHA ?? process.env.CF_PAGES_COMMIT_SHA;
+  if (fromEnv) return fromEnv.slice(0, 7);
+  try {
+    const sha = execSync("git rev-parse --short HEAD", { stdio: ["ignore", "pipe", "ignore"] }).toString().trim();
+    const dirty = execSync("git status --porcelain --untracked-files=no", { stdio: ["ignore", "pipe", "ignore"] }).toString().trim() !== "";
+    return dirty ? `${sha}-dirty` : sha;
+  } catch {
+    return "unknown";
+  }
+}
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
@@ -44,6 +58,7 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    define: { __BUILD_ID__: JSON.stringify(buildId()) },
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,

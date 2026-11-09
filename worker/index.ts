@@ -2,6 +2,9 @@
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
 
+// Injected at build time by vite.config.ts (git commit the build came from).
+declare const __BUILD_ID__: string;
+
 interface Env {
   ASSETS: Fetcher;
   DB: D1Database;
@@ -56,6 +59,7 @@ const LONG_CACHE_FILES = ["/logo.png", "/fav.png", "/favicon.ico", "/og-gvcyber.
 function withSecurityHeaders(request: Request, response: Response): Response {
   const headers = new Headers(response.headers);
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) headers.set(name, value);
+  headers.set("x-build", typeof __BUILD_ID__ === "string" ? __BUILD_ID__ : "dev");
 
   // German pages: the zone-injected analytics beacon is not allowed to load (the privacy policy says
   // measurement only happens with consent, and nothing loads it after consent).
