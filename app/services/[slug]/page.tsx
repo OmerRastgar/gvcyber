@@ -6,6 +6,7 @@ import PricingPanels from "../../components/PricingPanels";
 import { categoryContent, getService, services } from "../../data/services";
 import { clip, lowerFirst, pageTitle } from "../../lib/seo";
 import { buildServiceFaqs } from "../../lib/faq";
+import { hreflangFor } from "../../i18n/locales";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       `${service.name} UK`,
       "Golden Valley Cyber",
     ],
-    alternates: { canonical: `/services/${service.slug}` },
+    alternates: { canonical: `/services/${service.slug}`, languages: hreflangFor(`/services/${service.slug}`) },
     openGraph: {
       title: `${pageTitle(service.name, category.label, service.shortName)} | Golden Valley Cyber`,
       description: describe(service, category.label),

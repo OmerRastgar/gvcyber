@@ -75,6 +75,13 @@ const worker = {
       return Response.redirect(url.toString(), 301);
     }
 
+    // Country hint for the language suggestion banner. Not cached, sets no cookie, and pages never vary on it,
+    // so crawlers always receive identical HTML.
+    if (url.pathname === "/_geo") {
+      const country = (request as Request & { cf?: { country?: string } }).cf?.country ?? request.headers.get("cf-ipcountry") ?? null;
+      return withSecurityHeaders(request, new Response(JSON.stringify({ country }), { headers: { "content-type": "application/json", "cache-control": "no-store" } }));
+    }
+
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
       return withSecurityHeaders(request, await handleImageOptimization(request, {
@@ -86,7 +93,10 @@ const worker = {
       }, allowedWidths));
     }
 
-    return withSecurityHeaders(request, await handler.fetch(request, env, ctx));
+    // Tell the app which locale a path belongs to so the root layout can set <html lang>.
+    const isGerman = url.pathname === "/de" || url.pathname.startsWith("/de/");
+    const forwarded = isGerman ? new Request(request, { headers: new Headers([...request.headers, ["x-locale", "de"]]) }) : request;
+    return withSecurityHeaders(request, await handler.fetch(forwarded, env, ctx));
   },
 };
 

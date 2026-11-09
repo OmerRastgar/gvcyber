@@ -882,11 +882,12 @@ footer { padding: 50px max(5vw, 24px) 26px; border-top: 1px solid var(--line); b
   .cookie-banner-copy { font-size: 13px; line-height: 1.45; }
   .cookie-button { padding: 9px 12px; }
   .cookie-banner-actions {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: stretch;
   }
   .cookie-button {
-    flex: 1;
+    flex: 1 1 auto;
+    min-width: 0;
     text-align: center;
   }
 }
@@ -931,3 +932,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .site-header a.nav-cta:hover { background: var(--cyan); color: var(--ink); }
 .hero-cta { display: inline-flex; align-items: center; gap: 14px; margin-top: 28px; padding: 13px 24px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 15px; font-weight: 680; width: fit-content; }
 .hero-cta:hover { background: var(--cyan); color: var(--ink); }
+
+/* Language suggestion (never a forced redirect) */
+.locale-suggestion { position: fixed; top: 0; left: 0; right: 0; z-index: 250; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 20px; padding: 10px 16px; background: var(--ink); color: #fff; font-size: 14px; line-height: 1.4; }
+.locale-suggestion p { margin: 0; }
+.locale-suggestion p span { opacity: .7; }
+.locale-suggestion > div { display: flex; gap: 10px; }
+.locale-suggestion a, .locale-suggestion button { border: 1px solid rgba(255,255,255,.6); border-radius: 999px; padding: 7px 16px; background: transparent; color: #fff; font: 650 13px/1 var(--font-mono), monospace; cursor: pointer; }
+.locale-suggestion a.locale-suggestion-primary { background: #fff; color: var(--ink); border-color: #fff; }
+.form-privacy-note { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+/* German: long compound words need hyphenation, smaller display type and non-wrapping nav labels */
+html[lang="de"] .inner-hero > div, html[lang="de"] .service-detail-title, html[lang="de"] .contact-page-hero > div { min-width: 0; }
+html[lang="de"] h1, html[lang="de"] h2 { hyphens: auto; overflow-wrap: break-word; }
+html[lang="de"] .inner-hero h1, html[lang="de"] .service-detail-title h1, html[lang="de"] .contact-page-hero h1 { font-size: clamp(36px, 4.7vw, 74px); }
+html[lang="de"] .primary-nav { gap: clamp(14px, 1.7vw, 30px); }
+html[lang="de"] .primary-nav > a { white-space: nowrap; }
+@media (max-width: 600px) {
+  html[lang="de"] .inner-hero h1, html[lang="de"] .service-detail-title h1, html[lang="de"] .contact-page-hero h1 { font-size: 34px; }
+}

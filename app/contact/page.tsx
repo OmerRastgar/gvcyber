@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import ContactForm from "../components/ContactForm";
 import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
+import { hreflangFor } from "../i18n/locales";
 
 export const metadata: Metadata = {
   title: "Contact Us: Scope a Security Audit",
   description: "Contact Golden Valley Cyber in Cheltenham, UK to scope ISO 27001, a security audit, penetration testing, vulnerability scanning or an MSP partnership.",
   keywords: ["contact Golden Valley Cyber", "scope security audit", "ISO 27001 implementation", "application security testing", "vulnerability scanning quote", "penetration testing quote", "MSP security partner"],
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: "/contact", languages: hreflangFor("/contact") },
   openGraph: {
     title: "Contact Golden Valley Cyber | Scope a Security Audit or Test",
     description: "Contact Golden Valley Cyber to discuss ISO audit support, ISO 27001 implementation, application security testing, vulnerability scanning, penetration testing, compliance automation or an MSP partnership.",

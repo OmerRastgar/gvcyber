@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 import { caseStudies } from "./data/caseStudies";
+import { hreflangFor } from "./i18n/locales";
 
 export const metadata: Metadata = {
   title: { absolute: "Golden Valley Cyber, Cheltenham UK | ISO 27001 & Pentesting" },
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     "PCI DSS readiness",
     "SOC 2 readiness",
   ],
-  alternates: { canonical: "/", languages: { "x-default": "/", en: "/", "en-GB": "/uk" } },
+  alternates: { canonical: "/", languages: hreflangFor("/") },
   openGraph: {
     title: "Golden Valley Cyber, Cheltenham UK | ISO 27001 & Pentesting",
     description: "ISO audit support, ISO 27001 implementation, security audits, application security testing, penetration testing and vulnerability scanning.",

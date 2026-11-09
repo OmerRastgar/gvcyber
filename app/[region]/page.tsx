@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: RegionPageProps): Promise<Met
       "penetration testing",
       content.name,
     ],
-    alternates: { canonical: `/${region}`, languages: { "x-default": "/", en: "/", "en-GB": `/${region}` } },
+    alternates: { canonical: `/${region}`, languages: { "x-default": "/", en: "/", "en-GB": `/${region}`, de: "/de" } },
     openGraph: {
       title: "UK Cyber Security Consultancy, Cheltenham | Golden Valley Cyber",
       description: clip(content.description),

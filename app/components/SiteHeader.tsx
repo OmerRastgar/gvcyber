@@ -6,7 +6,10 @@ import { getServicesByCategory } from "../data/services";
 const regions = [
   { code: "global", flagSrc: "/flags/global.svg", label: "Global", href: "/" },
   { code: "uk", flagSrc: "/flags/gb.svg", label: "United Kingdom", href: "/uk" },
+  { code: "de", flagSrc: "/flags/de.svg", label: "Deutschland", href: "/de" },
 ];
+
+const LOCALE_STORAGE_KEY = "gvcyber-locale";
 
 const REGION_STORAGE_KEY = "gvcyber-region";
 
@@ -59,7 +62,7 @@ export default function SiteHeader() {
     }
     else {
       const storedRegion = window.localStorage.getItem(REGION_STORAGE_KEY);
-      const matchingRegion = regions.find((region) => region.code === storedRegion);
+      const matchingRegion = regions.find((region) => region.code === storedRegion && region.code !== "de");
       if (matchingRegion) {
         setCurrentRegion(matchingRegion);
         return;
@@ -97,7 +100,9 @@ export default function SiteHeader() {
     ));
 
   const selectRegion = (region: (typeof regions)[number]) => {
-    window.localStorage.setItem(REGION_STORAGE_KEY, region.code);
+    // "de" is a language choice (gvcyber-locale); the region key only holds global/uk.
+    window.localStorage.setItem(LOCALE_STORAGE_KEY, region.code === "de" ? "de" : "en");
+    if (region.code !== "de") window.localStorage.setItem(REGION_STORAGE_KEY, region.code);
     closeMenus();
   };
 

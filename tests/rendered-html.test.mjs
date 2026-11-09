@@ -324,3 +324,117 @@ test("the content security policy allows every external host the stylesheet load
   assert.ok(hosts.size > 0);
   for (const host of hosts) assert.ok(csp.includes(`https://${host}`), `CSP does not allow ${host}`);
 });
+
+const deDecode = (text) => text.replaceAll("&amp;", "&").replaceAll("&#x27;", "'").replaceAll("&quot;", '"');
+
+async function germanPaths() {
+  const source = await readFile(new URL("../app/data/de/services.ts", import.meta.url), "utf8");
+  const slugs = [...source.matchAll(/^    slug: "([^"]+)"/gm)].map((match) => match[1]);
+  return [
+    "/de",
+    "/de/services",
+    "/de/services/audits",
+    "/de/services/vulnerability-scanning",
+    "/de/services/penetration-testing",
+    "/de/contact",
+    "/de/impressum",
+    "/de/datenschutz",
+    ...slugs.map((slug) => `/de/services/${slug}`),
+  ];
+}
+
+test("German pages are German, well-formed and within SEO limits", async () => {
+  const paths = await germanPaths();
+  assert.ok(paths.length >= 30);
+  for (const path of paths) {
+    const response = await render(path);
+    assert.equal(response.status, 200, `${path} status`);
+    const html = await response.text();
+    assert.match(html, /<html lang="de"/, `${path} lang`);
+    assert.match(html, /property="og:locale" content="de_DE"/, `${path} og:locale`);
+    const title = deDecode(html.match(/<title>([^<]*)<\/title>/)?.[1] ?? "");
+    assert.ok(title.length > 0 && title.length <= 60, `${path} title ${title.length}: ${title}`);
+    const description = deDecode(html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? "");
+    assert.ok(description.length > 0 && description.length <= 160 && !description.endsWith("…"), `${path} description: ${description}`);
+    assert.doesNotMatch(html, /[âÂÃ]/, `${path} mojibake`);
+    assert.doesNotMatch(html, /Sovereign|Explore what|Book a scoping|Scope this service|Read the|Talk to Golden/, `${path} contains English UI copy`);
+    assert.match(html, /rel="canonical" href="https:\/\/gvcyber\.com\/de/, `${path} canonical`);
+  }
+  assert.equal((await render("/de/services/nope")).status, 404);
+  // English pages keep their language.
+  assert.match(await (await render("/")).text(), /<html lang="en-GB"/);
+});
+
+test("German and English twins reference each other with hreflang", async () => {
+  const pairs = [
+    ["/", "/de"],
+    ["/services", "/de/services"],
+    ["/services/audits", "/de/services/audits"],
+    ["/services/vulnerability-scanning", "/de/services/vulnerability-scanning"],
+    ["/services/penetration-testing", "/de/services/penetration-testing"],
+    ["/services/iso-27001", "/de/services/iso-27001"],
+    ["/services/nis2", "/de/services/nis2"],
+    ["/contact", "/de/contact"],
+  ];
+  const alternates = (html) => [...html.matchAll(/<link rel="alternate"[^>]*>/gi)].map((match) => match[0]);
+  const link = (html, lang, path) => alternates(html).some((tag) => new RegExp(`hreflang="${lang}"`, "i").test(tag) && tag.includes(`href="https://gvcyber.com${path === "/" ? "" : path}"`));
+  for (const [english, german] of pairs) {
+    const [en, de] = await Promise.all([render(english).then((r) => r.text()), render(german).then((r) => r.text())]);
+    assert.ok(link(en, "de", german), `${english} must point to ${german}`);
+    assert.ok(link(de, "de", german), `${german} must list itself`);
+    assert.ok(link(de, "en", english), `${german} must point back to ${english}`);
+  }
+  // German-only pages have no English twin and so no English alternate.
+  const only = await (await render("/de/services/tisax")).text();
+  assert.deepEqual(alternates(only), []);
+});
+
+test("German section stays unpublished until the Impressum is complete and legally reviewed", async () => {
+  const company = await readFile(new URL("../app/data/de/company.ts", import.meta.url), "utf8");
+  const reviewed = /legalReviewed:\s*true/.test(company);
+  const impressum = await (await render("/de/impressum")).text();
+  const hasPlaceholders = impressum.includes("[ANGABE ERFORDERLICH");
+  const sitemap = await (await render("/sitemap.xml")).text();
+  const home = await (await render("/de")).text();
+  if (reviewed) {
+    assert.equal(hasPlaceholders, false, "Impressum still has placeholders although legalReviewed is true");
+    assert.doesNotMatch(home, /name="robots" content="noindex/);
+    assert.match(sitemap, /https:\/\/gvcyber\.com\/de</);
+    assert.match(sitemap, /https:\/\/gvcyber\.com\/de\/impressum/);
+  } else {
+    assert.match(home, /name="robots" content="noindex/, "/de must be noindex while unpublished");
+    assert.doesNotMatch(sitemap, /gvcyber\.com\/de/);
+  }
+});
+
+test("German pricing is in euros, honest about scope and never invents prices", async () => {
+  const visible = (html) => deDecode(html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<style[\s\S]*?<\/style>/g, ""));
+  const iso = visible(await (await render("/de/services/iso-27001")).text());
+  assert.match(iso, /€/);
+  assert.doesNotMatch(iso, /\$\s?\d/);
+  assert.match(iso, /zuzüglich gesetzlicher Umsatzsteuer/);
+  for (const slug of ["it-grundschutz", "kritis-nis2", "tisax", "bsi-c5"]) {
+    const html = visible(await (await render(`/de/services/${slug}`)).text());
+    assert.match(html, /Auf Anfrage/, `${slug} must not invent a price`);
+    assert.match(html, /Abgrenzung/, `${slug} must state what the recognised body does`);
+    assert.match(html, /Wir sind (keine|kein)/, `${slug} must state we are not the certifying/auditing body`);
+    assert.doesNotMatch(html, /Wir sind (ein )?(vom BSI )?(zertifiziert|akkreditiert)/i, `${slug} claims accreditation`);
+  }
+  assert.match(visible(await (await render("/de/services/tisax")).text()), /eingetragene Marke der ENX Association/);
+});
+
+test("language suggestion endpoint returns a country hint and sets no cookie", async () => {
+  const { default: worker } = await import(new URL("../dist/server/index.js", import.meta.url).href);
+  const response = await worker.fetch(
+    new Request("http://localhost/_geo", { headers: { "cf-ipcountry": "DE" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  assert.equal(response.status, 200);
+  assert.equal((await response.json()).country, "DE");
+  assert.equal(response.headers.get("set-cookie"), null);
+  assert.match(response.headers.get("cache-control") ?? "", /no-store/);
+  // No country available (for example in tests): still a valid JSON answer.
+  const none = await render("/_geo");
+  assert.equal((await none.json()).country, null);
+});

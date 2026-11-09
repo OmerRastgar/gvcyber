@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import CategoryPage from "../../components/CategoryPage";
+import { hreflangFor } from "../../i18n/locales";
 
 export const metadata: Metadata = {
   title: "Penetration Testing Services",
   description: "Penetration testing for web apps, APIs, networks, mobile, cloud and wireless, with clear evidence and remediation guidance from Golden Valley Cyber.",
   keywords: ["penetration testing", "web application penetration testing", "API penetration testing", "network penetration testing", "mobile app penetration testing", "cloud penetration testing", "application security"],
-  alternates: { canonical: "/services/penetration-testing" },
+  alternates: { canonical: "/services/penetration-testing", languages: hreflangFor("/services/penetration-testing") },
   openGraph: {
     title: "Penetration Testing Services | Golden Valley Cyber",
     description: "Golden Valley Cyber penetration testing for web applications, APIs, networks, mobile apps, cloud infrastructure, wireless environments, social engineering and IoT systems.",
