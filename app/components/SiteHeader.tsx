@@ -104,7 +104,7 @@ export default function SiteHeader() {
   return (
     <header className="site-header reference-header">
       <a className="brand" href="/" aria-label="Golden Valley Cyber home" onClick={closeMenus}>
-        <img src="/logo.png" alt="Golden Valley Cyber" width="885" height="133" />
+        <img src="/logo.png" alt="Golden Valley Cyber" width="490" height="147" />
       </a>
 
       <button className="menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={toggleMobileMenu}>
@@ -127,6 +127,8 @@ export default function SiteHeader() {
             <a href="/industries/financial-services" onClick={closeMenus}>Financial services</a>
             <a href="/industries/healthcare" onClick={closeMenus}>Healthcare</a>
             <a href="/industries/technology-saas" onClick={closeMenus}>Technology & SaaS</a>
+            <a href="/industries/public-sector" onClick={closeMenus}>Public sector</a>
+            <a href="/industries/retail-ecommerce" onClick={closeMenus}>Retail & eCommerce</a>
             <a href="/industries/critical-infrastructure" onClick={closeMenus}>Critical infrastructure</a>
           </div>
 
@@ -142,7 +144,7 @@ export default function SiteHeader() {
         </div>
 
         <div className="secondary-nav">
-          <a href="/contact" onClick={closeMenus}>Contact</a>
+          <a className="nav-cta" href="/contact" onClick={closeMenus}>Contact</a>
           <div className="region-picker">
             <button
               type="button"
@@ -152,7 +154,7 @@ export default function SiteHeader() {
               aria-controls="region-menu"
               onClick={() => { setActiveMenu(null); setRegionOpen(!regionOpen); }}
             >
-              <img className="region-flag" src={currentRegion.flagSrc} alt="" aria-hidden="true" />
+              <img className="region-flag" src={currentRegion.flagSrc} alt="" aria-hidden="true" width="22" height="16" />
               <span className="region-current-label" aria-hidden="true">{currentRegion.label}</span>
               <span className="sr-only">Current site: {currentRegion.label}</span>
             </button>
@@ -160,7 +162,7 @@ export default function SiteHeader() {
               <p>Select a Golden Valley Cyber site</p>
               {regions.map((region) => (
                 <a className={currentRegion.code === region.code ? "active-region" : ""} href={region.href} key={region.code} onClick={() => selectRegion(region)}>
-                  <img className="region-flag" src={region.flagSrc} alt="" aria-hidden="true" />{region.label}
+                  <img className="region-flag" src={region.flagSrc} alt="" aria-hidden="true" width="22" height="16" />{region.label}
                   {currentRegion.code === region.code && <b aria-label="Current site">✓</b>}
                 </a>
               ))}

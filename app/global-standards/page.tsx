@@ -5,7 +5,7 @@ import SiteHeader from "../components/SiteHeader";
 import { globeCountries } from "../data/globeStandards";
 
 export const metadata: Metadata = {
-  title: "Global Cyber Security Standards Explorer | Golden Valley Cyber",
+  title: "Global Cyber Security Standards Explorer",
   description: "Explore cyber security standards by region, including ISO 27001, Cyber Essentials, SOC 2, PCI DSS, GDPR, NIST, HIPAA, DORA and NIS2.",
   keywords: [
     "ISO 27001",
@@ -27,13 +27,13 @@ export const metadata: Metadata = {
     siteName: "Golden Valley Cyber",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Global Cyber Security Standards Explorer | Golden Valley Cyber" }],
+    images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: "Global Cyber Security Standards Explorer | Golden Valley Cyber" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Global Cyber Security Standards Explorer | Golden Valley Cyber",
     description: "Explore cyber security standards by region.",
-    images: ["/og.png"],
+    images: ["/og-gvcyber.png"],
   },
 };
 

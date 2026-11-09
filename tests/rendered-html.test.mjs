@@ -22,25 +22,16 @@ test("renders the Golden Valley Cyber homepage and primary navigation", async ()
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Golden Valley Cyber \| Security Audits, ISO 27001, Pentesting and Vulnerability Scanning<\/title>/i);
+  assert.match(html, /<title>Golden Valley Cyber, Cheltenham UK \| ISO 27001 &amp; Pentesting<\/title>/i);
   assert.match(html, /Sovereign digital resilience/);
-  assert.match(html, /ALIGNED WITH INDUSTRY BODIES &amp; FRAMEWORKS/);
-  assert.match(html, /Google/);
-  assert.match(html, /Cloudflare/);
-  assert.match(html, /CyNam/);
-  assert.match(html, /Security BSides/);
-  assert.match(html, /PECB/);
-  assert.match(html, /ISACA/);
-  assert.match(html, /ISC2/);
-  assert.match(html, /CQI &amp; IRCA/);
-  assert.match(html, /IASME Consortium/);
-  assert.match(html, /UK Cyber Security Council/);
-  assert.match(html, /National Cybersecurity Authority/);
-  assert.match(html, /Dubai Electronic Security Center/);
-  assert.match(html, /Saudi Central Bank/);
-  assert.match(html, /OWASP/);
-  assert.match(html, /National Cyber Security Centre/);
-  assert.match(html, /University of Oxford/);
+  assert.match(html, /STANDARDS &amp; BODIES WE REFERENCE/);
+  for (const name of ["CyNam", "Security BSides", "PECB", "ISACA", "ISC2", "CQI &amp; IRCA", "IASME Consortium", "UK Cyber Security Council", "OWASP"]) {
+    assert.match(html, new RegExp(name));
+  }
+  // Names that implied an endorsement or relationship we cannot evidence.
+  for (const name of ["University of Oxford", "National Cyber Security Centre", "Saudi Central Bank", "Dubai Electronic Security Center", "National Cybersecurity Authority"]) {
+    assert.doesNotMatch(html, new RegExp(name));
+  }
   assert.match(html, /href="\/msp"/);
   assert.match(html, /href="\/industries"/);
   assert.match(html, /href="\/solutions"/);
@@ -62,7 +53,7 @@ test("renders a complete service detail route", async () => {
   assert.match(html, /Internal/);
   assert.match(html, /External/);
   assert.match(html, /people, business complexity and technology footprint/);
-  assert.match(html, /Discuss|Talk to Golden Valley Cyber/);
+  assert.match(html, /Scope this service/);
 });
 
 test("keeps the complete 31-service catalogue in one data source", async () => {
@@ -109,7 +100,7 @@ test("renders contact, careers, editable case-study, industry and expert routes"
   assert.match(ransomwareHtml, /Digital forensics after ransomware in a factory environment/);
   assert.match(ransomwareHtml, /SAP/);
   assert.match(ransomwareHtml, /HMI/);
-  assert.match(ransomwareHtml, /ransomware-factory-forensics\.png/);
+  assert.match(ransomwareHtml, /ransomware-factory-forensics\.webp/);
   assert.equal(oldCaseStudy.status, 404);
   assert.equal(industries.status, 200);
   const industriesHtml = await industries.text();
@@ -196,16 +187,135 @@ test("keeps client stories out of the primary navigation and exposes three mobil
     stat(new URL("../public/flags/global.svg", import.meta.url)),
     stat(new URL("../public/flags/gb.svg", import.meta.url)),
   ]);
-  const socials = await readFile(new URL("../app/data/socials.ts", import.meta.url), "utf8");
   const footer = await readFile(new URL("../app/components/SiteFooter.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(footer, /Clear assurance/);
   assert.doesNotMatch(footer, /Stronger business/);
   assert.match(footer, /A brand of/);
   assert.match(footer, /Soft Innovators/);
   assert.match(footer, /https:\/\/www\.softinnovators\.com\//);
-  assert.match(socials, /huggingface\.co\/gvcyber\/CyberSecurity/);
-  assert.match(socials, /github\.com\/gvcyber/);
-  assert.match(socials, /linkedin\.com\/company\/gvcyber/);
-  assert.match(socials, /x\.com\/gvcyber/);
-  assert.match(socials, /instagram\.com\/gvcyber/);
+  assert.doesNotMatch(footer, /social-links|huggingface|linkedin|instagram|x\.com/i);
+});
+
+const siteRoutes = [
+  "/",
+  "/uk",
+  "/services",
+  "/services/pci-dss",
+  "/services/iso-27001",
+  "/services/crest-penetration-testing",
+  "/industries",
+  "/industries/healthcare",
+  "/case-studies",
+  "/case-studies/cloudflare-zero-trust-shared-access",
+  "/case-studies/cisco-router-network-hardening",
+  "/case-studies/iso-42001-ai-governance-saas",
+  "/case-studies/factory-ransomware-digital-forensics",
+  "/expert-suggestions",
+  "/expert-suggestions/vibe-coder-guide-to-security",
+  "/contact",
+];
+
+test("rendered pages have no mojibake, placeholder copy or unevidenced claims", async () => {
+  for (const route of siteRoutes) {
+    const html = await (await render(route)).text();
+    assert.doesNotMatch(html, /[âÂÃ]/, `${route} contains mojibake`);
+    assert.doesNotMatch(html, /ready for approved client detail/i, `${route} contains placeholder copy`);
+    assert.doesNotMatch(html, /REPRESENTATIVE ENGAGEMENT/, `${route} still labels scenarios as engagements`);
+    assert.doesNotMatch(html, /accredited, threat-led|need accredited/i, `${route} claims CREST accreditation`);
+    assert.doesNotMatch(html, /PKR/, `${route} prices in PKR`);
+    assert.doesNotMatch(html, /uk organisations/, `${route} lowercases UK`);
+  }
+  const source = await readFile(new URL("../app/data/services.ts", import.meta.url), "utf8");
+  assert.doesNotMatch(source, /PKR/);
+});
+
+test("every service page title fits within 60 characters once the site name is added", async () => {
+  const source = await readFile(new URL("../app/data/services.ts", import.meta.url), "utf8");
+  const slugs = [...source.matchAll(/^    slug: "([^"]+)"/gm)].map((match) => match[1]);
+  assert.equal(slugs.length, 31);
+  for (const slug of slugs) {
+    const html = await (await render(`/services/${slug}`)).text();
+    const title = (html.match(/<title>([^<]*)<\/title>/)?.[1] ?? "").replaceAll("&amp;", "&");
+    assert.ok(title.length > 0 && title.length <= 60, `${slug} title is ${title.length} chars: ${title}`);
+  }
+  const home = await (await render("/")).text();
+  assert.ok((home.match(/<title>([^<]*)<\/title>/)?.[1] ?? "").replaceAll("&amp;", "&").length <= 60);
+});
+
+test("structured data uses one organisation id, unique breadcrumbs and article dates", async () => {
+  const jsonLd = (html) => [...html.matchAll(/<script type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)].map((match) => JSON.parse(match[1]));
+  const nodes = (html) => jsonLd(html).flatMap((block) => block["@graph"] ?? [block]);
+
+  const caseHtml = await (await render("/case-studies/factory-ransomware-digital-forensics")).text();
+  const crumbs = nodes(caseHtml).find((node) => node["@type"] === "BreadcrumbList");
+  const urls = crumbs.itemListElement.map((item) => item.item);
+  assert.equal(new Set(urls).size, urls.length, "breadcrumb URLs must be unique");
+
+  const articleHtml = await (await render("/expert-suggestions/vibe-coder-guide-to-security")).text();
+  const post = nodes(articleHtml).find((node) => node["@type"] === "BlogPosting");
+  assert.match(post.datePublished, /^\d{4}-\d{2}-\d{2}$/);
+  assert.match(post.dateModified, /^\d{4}-\d{2}-\d{2}$/);
+  assert.doesNotMatch(JSON.stringify(post.mainEntityOfPage), /medium\.com/);
+
+  const serviceHtml = await (await render("/services/pci-dss")).text();
+  assert.ok(nodes(serviceHtml).some((node) => node["@type"] === "BreadcrumbList"));
+  const industryHtml = await (await render("/industries/healthcare")).text();
+  assert.ok(nodes(industryHtml).some((node) => node["@type"] === "BreadcrumbList"));
+
+  const ids = nodes(await (await render("/")).text()).map((node) => node["@id"]).filter(Boolean);
+  assert.equal(new Set(ids).size, ids.length, "@id values must not repeat on one page");
+  assert.ok(ids.includes("https://gvcyber.com/#organization"));
+});
+
+test("declares hreflang for the global and UK pages", async () => {
+  const [home, uk] = await Promise.all([render("/"), render("/uk")]);
+  assert.match(await home.text(), /hrefLang="x-default"|hreflang="x-default"/i);
+  const ukHtml = await uk.text();
+  assert.match(ukHtml, /hreflang="en-GB"|hrefLang="en-GB"/i);
+  assert.match(ukHtml, /property="og:url" content="https:\/\/gvcyber\.com\/uk"/);
+});
+
+test("sends security headers and redirects www to the apex domain", async () => {
+  const response = await render("/");
+  for (const name of ["strict-transport-security", "content-security-policy", "x-content-type-options", "x-frame-options", "referrer-policy", "permissions-policy"]) {
+    assert.ok(response.headers.get(name), `missing ${name}`);
+  }
+
+  const { default: worker } = await import(new URL("../dist/server/index.js", import.meta.url).href);
+  const redirect = await worker.fetch(
+    new Request("https://www.gvcyber.com/services?x=1"),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  assert.equal(redirect.status, 301);
+  assert.equal(redirect.headers.get("location"), "https://gvcyber.com/services?x=1");
+});
+
+test("ships discovery and identity files and keeps the sitemap honest", async () => {
+  await Promise.all([
+    stat(new URL("../public/.well-known/security.txt", import.meta.url)),
+    stat(new URL("../public/favicon.ico", import.meta.url)),
+    stat(new URL("../public/og-gvcyber.png", import.meta.url)),
+  ]);
+  const security = await readFile(new URL("../public/.well-known/security.txt", import.meta.url), "utf8");
+  assert.match(security, /^Contact: mailto:hello@gvcyber\.com/m);
+  assert.match(security, /^Expires: /m);
+
+  const xml = await (await render("/sitemap.xml")).text();
+  assert.doesNotMatch(xml, /<changefreq>|<priority>/);
+  const llms = await readFile(new URL("../public/llms.txt", import.meta.url), "utf8");
+  assert.match(llms, /services\/crest-penetration-testing/);
+  assert.match(llms, /case-studies\/factory-ransomware-digital-forensics/);
+
+  const robots = await (await render("/robots.txt")).text();
+  assert.match(robots, /Claude-SearchBot/);
+  assert.doesNotMatch(robots, /Claude-Web/);
+});
+
+test("the content security policy allows every external host the stylesheet loads", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const hosts = new Set([...css.matchAll(/https:\/\/([a-z0-9.-]+)/gi)].map((match) => match[1]));
+  const csp = (await render("/")).headers.get("content-security-policy") ?? "";
+  assert.ok(hosts.size > 0);
+  for (const host of hosts) assert.ok(csp.includes(`https://${host}`), `CSP does not allow ${host}`);
 });

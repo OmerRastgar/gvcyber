@@ -4,6 +4,7 @@ import SiteFooter from "../../components/SiteFooter";
 import SiteHeader from "../../components/SiteHeader";
 import { getIndustry, industries, type Industry } from "../../data/industries";
 import { getService } from "../../data/services";
+import { clip } from "../../lib/seo";
 
 type IndustryPageProps = { params: Promise<{ slug: string }> };
 
@@ -22,10 +23,20 @@ export async function generateMetadata({ params }: IndustryPageProps): Promise<M
   const industry = getIndustry(slug);
   if (!industry) return {};
   return {
-    title: `${industry.title} Cyber Security Services | Golden Valley Cyber`,
-    description: `${industry.summary} View applicable audits, vulnerability scanning and penetration testing services for ${industry.title.toLowerCase()}.`,
+    title: `${industry.title} Cyber Security Services`,
+    description: clip(`${industry.summary} Audits, scanning and testing for ${industry.title.toLowerCase()} from Golden Valley Cyber, Cheltenham UK.`),
     keywords: [industry.title, "security audits", "vulnerability scanning", "penetration testing", "application security", "ISO 27001", "Golden Valley Cyber"],
     alternates: { canonical: `/industries/${industry.slug}` },
+    openGraph: {
+      title: `${industry.title} Cyber Security Services | Golden Valley Cyber`,
+      description: clip(industry.summary),
+      url: `/industries/${industry.slug}`,
+      siteName: "Golden Valley Cyber",
+      locale: "en_GB",
+      type: "website",
+      images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: `${industry.title} cyber security | Golden Valley Cyber` }],
+    },
+    twitter: { card: "summary_large_image", title: `${industry.title} Cyber Security Services`, description: clip(industry.summary, 120), images: ["/og-gvcyber.png"] },
   };
 }
 
@@ -34,12 +45,13 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
   const industry = getIndustry(slug);
   if (!industry) notFound();
 
-  const structuredData = {
-    "@context": "https://schema.org",
+  const serviceNode = {
     "@type": "Service",
     name: `${industry.title} cyber security services`,
-    provider: { "@type": "Organization", name: "Golden Valley Cyber", url: "https://gvcyber.com" },
-    areaServed: industry.title,
+    url: `https://gvcyber.com/industries/${industry.slug}`,
+    provider: { "@id": "https://gvcyber.com/#organization" },
+    audience: { "@type": "Audience", audienceType: industry.title },
+    areaServed: ["United Kingdom", "Global"],
     description: industry.summary,
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -51,6 +63,20 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
         }).filter(Boolean),
       ),
     },
+  };
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      serviceNode,
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Industries", item: "https://gvcyber.com/industries" },
+          { "@type": "ListItem", position: 2, name: industry.title, item: `https://gvcyber.com/industries/${industry.slug}` },
+        ],
+      },
+    ],
   };
 
   return (

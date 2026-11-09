@@ -3,8 +3,8 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Careers | Golden Valley Cyber",
-  description: "Careers at Golden Valley Cyber. There are no open roles right now, but this page will list future cyber security, audit, application security and compliance roles.",
+  title: "Careers",
+  description: "Careers at Golden Valley Cyber. No open roles right now, but future cyber security, audit, application security and compliance roles will be listed here.",
   keywords: ["Golden Valley Cyber careers", "cyber security careers", "application security jobs", "security audit jobs", "ISO 27001 jobs"],
   alternates: { canonical: "/careers" },
   openGraph: {
@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     siteName: "Golden Valley Cyber",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Careers | Golden Valley Cyber" }],
+    images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: "Careers | Golden Valley Cyber" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Careers | Golden Valley Cyber",
     description: "Cyber security careers.",
-    images: ["/og.png"],
+    images: ["/og-gvcyber.png"],
   },
 };
 

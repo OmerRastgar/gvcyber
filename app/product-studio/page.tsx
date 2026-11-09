@@ -3,8 +3,8 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Product Studio | Open-source Compliance Automation | Golden Valley Cyber",
-  description: "Golden Valley Cyber Product Studio is an open-source compliance automation workspace for ISO 27001, audit evidence, controls, readiness, remediation and MSP delivery.",
+  title: "Product Studio: Compliance Automation",
+  description: "Open-source compliance automation workspace for ISO 27001, audit evidence, controls, readiness and remediation tracking from Golden Valley Cyber.",
   keywords: ["open-source compliance automation", "ISO 27001 automation", "audit evidence", "compliance management", "control mapping", "MSP compliance platform", "security implementation"],
   alternates: { canonical: "/product-studio" },
   openGraph: {
@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     siteName: "Golden Valley Cyber",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Product Studio | Golden Valley Cyber" }],
+    images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: "Product Studio | Golden Valley Cyber" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Product Studio | Golden Valley Cyber",
     description: "Open-source compliance automation.",
-    images: ["/og.png"],
+    images: ["/og-gvcyber.png"],
   },
 };
 

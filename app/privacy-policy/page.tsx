@@ -3,8 +3,8 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Golden Valley Cyber",
-  description: "Privacy policy for Golden Valley Cyber, a brand of Soft Innovators UK Ltd. How we collect, use, store and protect personal information under UK GDPR.",
+  title: "Privacy Policy",
+  description: "How Golden Valley Cyber, a brand of Soft Innovators UK Ltd, collects, uses, stores and protects personal information under UK GDPR.",
   keywords: ["privacy policy", "data protection", "UK GDPR", "Golden Valley Cyber", "Soft Innovators UK Ltd"],
   alternates: { canonical: "/privacy-policy" },
   openGraph: {
@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     siteName: "Golden Valley Cyber",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Privacy Policy | Golden Valley Cyber" }],
+    images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: "Privacy Policy | Golden Valley Cyber" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Privacy Policy | Golden Valley Cyber",
     description: "How we collect, use, store and protect personal information.",
-    images: ["/og.png"],
+    images: ["/og-gvcyber.png"],
   },
 };
 

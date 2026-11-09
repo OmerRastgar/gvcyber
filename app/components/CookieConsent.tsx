@@ -44,7 +44,15 @@ export default function CookieConsent() {
     setMounted(true);
   }, []);
 
-  if (!mounted || consent !== null) return null;
+  const visible = mounted && consent === null;
+
+  // Reserve space at the bottom of the page while the banner is up so it never covers content.
+  useEffect(() => {
+    document.documentElement.classList.toggle("has-cookie-banner", visible);
+    return () => document.documentElement.classList.remove("has-cookie-banner");
+  }, [visible]);
+
+  if (!visible) return null;
 
   const openManage = () => {
     setDraft(readStoredConsent() ?? DEFAULT_CONSENT);
@@ -77,9 +85,8 @@ export default function CookieConsent() {
     <div className="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
       <div className="cookie-banner-inner">
         <p className="cookie-banner-copy">
-          Select &ldquo;Accept all&rdquo; to agree to our use of cookies and similar
-          technologies to enhance your browsing experience, security, analytics and
-          customisation. Select &ldquo;Manage cookies&rdquo; to make more choices or opt out.
+          We use cookies for security, analytics and to remember your preferences.
+          Choose &ldquo;Accept all&rdquo;, or &ldquo;Manage cookies&rdquo; to opt out.
         </p>
 
         {manageOpen ? (

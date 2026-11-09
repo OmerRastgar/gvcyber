@@ -3,15 +3,17 @@ import type { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/" },
       {
         userAgent: [
+          "*",
           "GPTBot",
           "OAI-SearchBot",
           "ChatGPT-User",
           "ClaudeBot",
-          "Claude-Web",
+          "Claude-SearchBot",
+          "Claude-User",
           "PerplexityBot",
+          "Perplexity-User",
           "Google-Extended",
           "CCBot",
           "Bytespider",
@@ -23,4 +25,3 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: "https://gvcyber.com/sitemap.xml",
   };
 }
-

@@ -4,8 +4,8 @@ import SiteHeader from "../components/SiteHeader";
 import { expertSuggestions } from "../data/expertSuggestions";
 
 export const metadata: Metadata = {
-  title: "Expert Suggestions | Cyber Security Guidance | Golden Valley Cyber",
-  description: "Practical Golden Valley Cyber expert suggestions for ISO audit readiness, vulnerability scanning, penetration testing, application security and security implementation.",
+  title: "Expert Cyber Security Guidance",
+  description: "Practical guidance on ISO audit readiness, vulnerability scanning, penetration testing, application security and security scoping.",
   keywords: ["cyber security blog", "expert suggestions", "ISO audit", "ISO 27001", "vulnerability scanning", "penetration testing", "application security", "security implementation"],
   alternates: { canonical: "/expert-suggestions" },
   openGraph: {
@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     siteName: "Golden Valley Cyber",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Expert Suggestions | Golden Valley Cyber" }],
+    images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: "Expert Suggestions | Golden Valley Cyber" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Expert Suggestions | Golden Valley Cyber",
     description: "Practical cyber security guidance.",
-    images: ["/og.png"],
+    images: ["/og-gvcyber.png"],
   },
 };
 
@@ -36,7 +36,7 @@ export default function ExpertSuggestionsPage() {
       "@type": "BlogPosting",
       headline: post.title,
       description: post.summary,
-      url: post.externalUrl ?? `https://gvcyber.com/expert-suggestions/${post.slug}`,
+      url: `https://gvcyber.com/expert-suggestions/${post.slug}`,
     })),
   };
 
@@ -56,7 +56,7 @@ export default function ExpertSuggestionsPage() {
             <span>{String(index + 1).padStart(2, "0")} · {post.category} · {post.readingTime}</span>
             <h2>{post.title}</h2>
             <p>{post.summary}</p>
-            <a href={post.externalUrl ?? `/expert-suggestions/${post.slug}`} target={post.externalUrl ? "_blank" : undefined} rel={post.externalUrl ? "noopener noreferrer" : undefined}>Read suggestion <b aria-hidden="true">⟶</b></a>
+            <a href={`/expert-suggestions/${post.slug}`}>Read suggestion <b aria-hidden="true">⟶</b></a>
           </article>
         ))}
       </section>
