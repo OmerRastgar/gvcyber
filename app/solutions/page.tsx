@@ -3,8 +3,8 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Solutions | Product Studio, MSP Partners and Security Programmes | Golden Valley Cyber",
-  description: "Explore Golden Valley Cyber solutions for Product Studio compliance automation, MSP security partnerships, assurance readiness, attack surface clarity and continuous resilience.",
+  title: "Security Solutions & Programmes",
+  description: "Product Studio compliance automation, MSP security partnerships, assurance readiness and attack surface clarity from Golden Valley Cyber.",
   keywords: ["cyber security solutions", "Product Studio", "compliance automation", "MSP security partner", "assurance readiness", "attack surface management", "continuous vulnerability scanning", "security implementation"],
   alternates: { canonical: "/solutions" },
   openGraph: {
@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     siteName: "Golden Valley Cyber",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Solutions | Golden Valley Cyber" }],
+    images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: "Solutions | Golden Valley Cyber" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Solutions | Golden Valley Cyber",
     description: "Tools and programmes for clearer security work.",
-    images: ["/og.png"],
+    images: ["/og-gvcyber.png"],
   },
 };
 

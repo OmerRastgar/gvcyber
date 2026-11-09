@@ -1,41 +1,77 @@
 # Golden Valley Cyber
 
-Golden Valley Cyber provides cyber security assurance services: security audits, ISO 27001
-implementation, ISO audit support, application security testing, vulnerability scanning,
-and penetration testing. Work is described in concrete terms focused on reducing real
-exposure and making the next action clear.
+> Golden Valley Cyber is a cyber security consultancy in Cheltenham, UK, providing security audits, ISO 27001 implementation, application security testing, vulnerability scanning and penetration testing.
 
-## What Golden Valley Cyber does
-
-- Security audits and compliance readiness (ISO 27001, SOC 2, PCI DSS, Cyber Essentials,
-  GDPR, HIPAA, NIST CSF, DORA, NIS2, SAMA, CMMC and more).
-- Vulnerability scanning across networks, applications, hosts, databases, authenticated
-  and unauthenticated environments, and cloud-native workloads.
-- Penetration testing across web, mobile, network, cloud, wireless, social engineering and
-  IoT/embedded systems.
-- Practical remediation guidance and readiness support, delivered without overstating
-  certification outcomes.
+Golden Valley Cyber is a trading name of Soft Innovators UK Ltd (company number 06890751), Frogmore House, 6 Ormond Place, Cheltenham GL50 1JD. It is not a CREST member; its penetration testing follows CREST-style methodology. Case studies on this site are illustrative scenarios, not named client results.
 
 ## Services
 
-- [ISO 27001](https://gvcyber.com/services/iso-27001): ISMS readiness, gap assessment,
-  control evidence and certification audit support.
-- [PCI DSS](https://gvcyber.com/services/pci-dss): readiness and implementation support
-  for organisations processing card payments.
-- [SOC 2](https://gvcyber.com/services/soc-2): control design and evidence support for
-  SaaS and technology companies.
-- [Cyber Essentials](https://gvcyber.com/services/cyber-essentials): UK baseline
-  certification readiness and remediation.
-- [Vulnerability scanning](https://gvcyber.com/services/vulnerability-scanning): network,
-  host, database, cloud and authenticated scanning with validation.
-- [Penetration testing](https://gvcyber.com/services/penetration-testing): manual testing
-  across web, mobile, network, cloud, wireless, social engineering and IoT.
+### Audits and compliance
+- [PCI DSS](https://gvcyber.com/services/pci-dss): Any company processing or storing card payments.
+- [ISO 27001](https://gvcyber.com/services/iso-27001): Organisations that need a structured information security management system.
+- [SOC 2 (Type I / Type II)](https://gvcyber.com/services/soc-2): SaaS and technology companies handling customer data.
+- [Cyber Essentials](https://gvcyber.com/services/cyber-essentials): UK organisations and suppliers seeking a recognised baseline certification.
+- [Cyber Essentials Plus](https://gvcyber.com/services/cyber-essentials-plus): UK organisations needing independently tested Cyber Essentials controls.
+- [GDPR Compliance](https://gvcyber.com/services/gdpr-compliance): Organisations processing personal data belonging to people in the UK or EU.
+- [ISO 42001 (AI Management)](https://gvcyber.com/services/iso-42001): Organisations developing, supplying or using AI systems.
+- [HIPAA](https://gvcyber.com/services/hipaa): US healthcare providers, health plans and business associates handling protected health information.
+- [HITRUST](https://gvcyber.com/services/hitrust): Healthcare and technology organisations that need a rigorous, certifiable assurance framework.
+- [NIST CSF / 800-53](https://gvcyber.com/services/nist-csf-800-53): Organisations aligning security controls with US government and industry guidance.
+- [FedRAMP](https://gvcyber.com/services/fedramp): Cloud service providers seeking to serve US federal agencies.
+- [DORA](https://gvcyber.com/services/dora): Financial entities and critical ICT providers operating in the European Union.
+- [NIS2](https://gvcyber.com/services/nis2): Essential and important entities operating in covered European sectors.
+- [SAMA Cyber Security Framework](https://gvcyber.com/services/sama): Banks, insurers, finance companies and other entities regulated by the Saudi Central Bank.
+- [CMMC](https://gvcyber.com/services/cmmc): Organisations in the US defence industrial base handling FCI or CUI.
+- [CCPA / CPRA](https://gvcyber.com/services/ccpa-cpra): Businesses subject to California consumer privacy requirements.
+
+### Vulnerability scanning
+- [Network Vulnerability Scanning](https://gvcyber.com/services/network-vulnerability-scanning): Companies with routers, firewalls and internal networks.
+- [Web Application Vulnerability Scanning](https://gvcyber.com/services/web-application-vulnerability-scanning): Organisations with public-facing websites or APIs.
+- [Host-Based Vulnerability Scanning](https://gvcyber.com/services/host-based-vulnerability-scanning): Companies managing servers, workstations and endpoints.
+- [Database Vulnerability Scanning](https://gvcyber.com/services/database-vulnerability-scanning): Businesses storing sensitive data in SQL or NoSQL databases.
+- [Authenticated (Credentialed) Scanning](https://gvcyber.com/services/authenticated-vulnerability-scanning): Organisations needing deep internal system assessment.
+- [Unauthenticated (Non-Credentialed) Scanning](https://gvcyber.com/services/unauthenticated-vulnerability-scanning): Companies wanting an external attacker’s view.
+- [Cloud-Native Vulnerability Scanning](https://gvcyber.com/services/cloud-native-vulnerability-scanning): Cloud-first companies using containers, serverless services and managed cloud platforms.
+
+### Penetration testing
+- [Network Penetration Testing](https://gvcyber.com/services/network-penetration-testing): Companies with internal or external network infrastructure.
+- [Web Application Penetration Testing](https://gvcyber.com/services/web-application-penetration-testing): SaaS, eCommerce and organisations with public-facing web applications.
+- [Mobile App Penetration Testing](https://gvcyber.com/services/mobile-app-penetration-testing): Companies offering iOS or Android applications to customers or staff.
+- [Cloud Infrastructure Penetration Testing](https://gvcyber.com/services/cloud-infrastructure-penetration-testing): Companies using AWS, Azure, GCP or cloud-native services.
+- [Social Engineering Penetration Testing](https://gvcyber.com/services/social-engineering-penetration-testing): Organisations that want to test human and process resilience.
+- [Wireless Networking Penetration Testing](https://gvcyber.com/services/wireless-network-penetration-testing): Offices, retail locations and manufacturers using Wi-Fi or Bluetooth.
+- [IoT / Embedded Systems Penetration Testing](https://gvcyber.com/services/iot-embedded-penetration-testing): Manufacturing, healthcare device and smart-technology companies.
+- [CREST-aligned Penetration Testing](https://gvcyber.com/services/crest-penetration-testing): UK organisations and suppliers that need threat-led penetration testing aligned with CREST methodology.
+
+## Industries
+
+- [Financial services](https://gvcyber.com/industries/financial-services): Security audits, PCI DSS readiness, SOC 2 readiness, cloud security review and penetration testing for regulated financial environments.
+- [Healthcare](https://gvcyber.com/industries/healthcare): HIPAA readiness, application security, vulnerability scanning and risk review for teams protecting health and patient data.
+- [Technology and SaaS](https://gvcyber.com/industries/technology-saas): SOC 2 readiness, ISO 27001 implementation, web application testing, API testing and secure product delivery support.
+- [Public sector](https://gvcyber.com/industries/public-sector): Security control mapping, supplier readiness, NIST alignment, Cyber Essentials and vulnerability management support.
+- [Retail and ecommerce](https://gvcyber.com/industries/retail-ecommerce): PCI DSS readiness, payment-flow testing, web application penetration testing and customer-data protection review.
+- [Critical infrastructure](https://gvcyber.com/industries/critical-infrastructure): Risk assessment, network testing, cloud review and operational resilience support for essential systems.
+
+## Expert suggestions (articles)
+
+- [What to prepare before an ISO 27001 certification audit](https://gvcyber.com/expert-suggestions/iso-27001-readiness-before-certification): A practical readiness checklist for teams that want fewer surprises before formal ISO 27001 assessment.
+- [How to make vulnerability scanning useful instead of noisy](https://gvcyber.com/expert-suggestions/vulnerability-scanning-without-noise): Scanning only helps when assets, credentials, validation and remediation ownership are handled properly.
+- [PCI secure software requirements and key management](https://gvcyber.com/expert-suggestions/pci-secure-software-key-management): What the PCI Secure Software Framework expects from cryptography and key lifecycle management, and where engineering teams still carry the responsibility.
+- [Hardening your Cisco network: a security audit checklist](https://gvcyber.com/expert-suggestions/cisco-network-hardening-audit-checklist): A baseline set of Cisco IOS checks for disabling legacy services, locking down management access, and verifying interface, routing and logging configuration.
+- [A vibe coder's guide to security](https://gvcyber.com/expert-suggestions/vibe-coder-guide-to-security): A practical guide for developers using AI assistants to identify, verify and fix common security issues before they ship.
+
+## Illustrative case studies
+
+- [Zero Trust controls for shared customer access](https://gvcyber.com/case-studies/cloudflare-zero-trust-shared-access): A data analytics firm needed rapid access to short-term customer environments without losing accountability when clients only provided shared credentials.
+- [Auditing Cisco routers for misconfiguration and legacy risk](https://gvcyber.com/case-studies/cisco-router-network-hardening): A professional services firm regained control of a black-box network, removed ghost devices and improved video stability without replacing all infrastructure immediately.
+- [AI governance for a SaaS provider using ISO 42001](https://gvcyber.com/case-studies/iso-42001-ai-governance-saas): A SaaS provider needed a practical AI governance baseline that could support customer assurance, application security and future ISO 42001 readiness.
+- [Digital forensics after ransomware in a factory environment](https://gvcyber.com/case-studies/factory-ransomware-digital-forensics): A manufacturing site needed root-cause analysis, malware validation and safer recovery across servers, SAP, thin clients, IP cameras, HMI systems and printers.
 
 ## Regions
 
-Golden Valley Cyber serves a global audience with a site variant for the United Kingdom
-(https://gvcyber.com/uk).
+- Global: https://gvcyber.com
+- United Kingdom: https://gvcyber.com/uk
 
 ## Contact
 
-Email hello@gvcyber.com to discuss an engagement or scope a security audit or test.
+Email hello@gvcyber.com or use https://gvcyber.com/contact to scope an engagement.

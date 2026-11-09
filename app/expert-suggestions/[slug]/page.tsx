@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import SiteFooter from "../../components/SiteFooter";
 import SiteHeader from "../../components/SiteHeader";
 import { expertSuggestions, getExpertSuggestion } from "../../data/expertSuggestions";
+import { clip } from "../../lib/seo";
 
 type ExpertSuggestionPageProps = { params: Promise<{ slug: string }> };
 
@@ -15,24 +16,24 @@ export async function generateMetadata({ params }: ExpertSuggestionPageProps): P
   const post = getExpertSuggestion(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | Golden Valley Cyber Expert Suggestions`,
-    description: post.summary,
+    title: post.title,
+    description: clip(post.summary),
     keywords: [post.category, "Golden Valley Cyber", "security implementation", "application security", "ISO audit", "vulnerability scanning", "penetration testing"],
     alternates: { canonical: `/expert-suggestions/${post.slug}` },
     openGraph: {
       title: `${post.title} | Golden Valley Cyber Expert Suggestions`,
-      description: post.summary,
-      url: post.externalUrl ?? `https://gvcyber.com/expert-suggestions/${post.slug}`,
+      description: clip(post.summary),
+      url: `https://gvcyber.com/expert-suggestions/${post.slug}`,
       siteName: "Golden Valley Cyber",
       locale: "en_GB",
       type: "article",
-      images: [{ url: "/og.png", width: 1672, height: 941, alt: `${post.title} | Golden Valley Cyber` }],
+      images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: `${post.title} | Golden Valley Cyber` }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${post.title} | Golden Valley Cyber Expert Suggestions`,
       description: post.summary,
-      images: ["/og.png"],
+      images: ["/og-gvcyber.png"],
     },
   };
 }
@@ -47,9 +48,13 @@ export default async function ExpertSuggestionDetailPage({ params }: ExpertSugge
     "@type": "BlogPosting",
     headline: post.title,
     description: post.summary,
-    author: { "@type": "Organization", name: "Golden Valley Cyber" },
-    publisher: { "@type": "Organization", name: "Golden Valley Cyber", url: "https://gvcyber.com" },
-    mainEntityOfPage: post.externalUrl ?? `https://gvcyber.com/expert-suggestions/${post.slug}`,
+    datePublished: post.published,
+    dateModified: post.updated,
+    image: "https://gvcyber.com/og-gvcyber.png",
+    author: { "@id": "https://gvcyber.com/#organization" },
+    publisher: { "@id": "https://gvcyber.com/#organization" },
+    mainEntityOfPage: `https://gvcyber.com/expert-suggestions/${post.slug}`,
+    ...(post.externalUrl ? { sameAs: [post.externalUrl] } : {}),
   };
 
   return (
@@ -66,7 +71,7 @@ export default async function ExpertSuggestionDetailPage({ params }: ExpertSugge
         <div className="service-detail-summary">
           <p>READING TIME</p>
           <h2>{post.summary}</h2>
-          <span>{post.readingTime}</span>
+          <span>{post.readingTime} · Published <time dateTime={post.published}>{post.published}</time> · Updated <time dateTime={post.updated}>{post.updated}</time></span>
         </div>
       </section>
       <section className="expert-detail-body">
@@ -80,6 +85,18 @@ export default async function ExpertSuggestionDetailPage({ params }: ExpertSugge
           ))}
         </ol>
       </section>
+      <article className="expert-article">
+        <p className="expert-article-intro">{post.intro}</p>
+        {post.sections.map((section) => (
+          <section key={section.heading}>
+            <h2>{section.heading}</h2>
+            {section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </section>
+        ))}
+        {post.externalUrl ? (
+          <p className="expert-article-source">Also published on <a href={post.externalUrl} target="_blank" rel="noopener noreferrer">{post.externalLabel ?? "another site"}</a>.</p>
+        ) : null}
+      </article>
       <section className="catalog-note">
         <p>Related Golden Valley Cyber services for this suggestion.</p>
         <div className="expert-related-links">

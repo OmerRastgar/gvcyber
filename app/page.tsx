@@ -4,8 +4,8 @@ import SiteHeader from "./components/SiteHeader";
 import { caseStudies } from "./data/caseStudies";
 
 export const metadata: Metadata = {
-  title: "Golden Valley Cyber | Security Audits, ISO 27001, Pentesting and Vulnerability Scanning",
-  description: "Golden Valley Cyber provides ISO audit support, ISO 27001 implementation, security audits, application security testing, penetration testing and vulnerability scanning.",
+  title: { absolute: "Golden Valley Cyber, Cheltenham UK | ISO 27001 & Pentesting" },
+  description: "Golden Valley Cyber is a Cheltenham, UK cyber security consultancy for ISO 27001, security audits, penetration testing and vulnerability scanning.",
   keywords: [
     "ISO audit",
     "ISO 27001",
@@ -18,21 +18,21 @@ export const metadata: Metadata = {
     "PCI DSS readiness",
     "SOC 2 readiness",
   ],
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", languages: { "x-default": "/", en: "/" } },
   openGraph: {
-    title: "Golden Valley Cyber | Security Audits, ISO 27001, Pentesting and Vulnerability Scanning",
+    title: "Golden Valley Cyber, Cheltenham UK | ISO 27001 & Pentesting",
     description: "ISO audit support, ISO 27001 implementation, security audits, application security testing, penetration testing and vulnerability scanning.",
     url: "https://gvcyber.com",
     siteName: "Golden Valley Cyber",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Golden Valley Cyber — Sovereign digital resilience." }],
+    images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: "Golden Valley Cyber: Sovereign digital resilience." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Golden Valley Cyber | Security Audits, ISO 27001, Pentesting and Vulnerability Scanning",
+    title: "Golden Valley Cyber, Cheltenham UK | ISO 27001 & Pentesting",
     description: "ISO audit support, ISO 27001 implementation, security audits, application security testing, penetration testing and vulnerability scanning.",
-    images: ["/og.png"],
+    images: ["/og-gvcyber.png"],
   },
 };
 
@@ -64,8 +64,6 @@ const offers = [
 ];
 
 const trustItems = [
-  { name: "Google", href: "https://www.google.com/" },
-  { name: "Cloudflare", href: "https://www.cloudflare.com/" },
   { name: "CyNam", href: "https://cynam.org/" },
   { name: "Security BSides", href: "https://securitybsides.com/" },
   { name: "PECB", href: "https://mypecb.com/" },
@@ -74,12 +72,7 @@ const trustItems = [
   { name: "CQI & IRCA", href: "https://www.quality.org/" },
   { name: "IASME Consortium", href: "https://iasme.co.uk/" },
   { name: "UK Cyber Security Council", href: "https://www.ukcybersecuritycouncil.org.uk/" },
-  { name: "National Cybersecurity Authority (NCA)", href: "https://nca.gov.sa/en/" },
-  { name: "Dubai Electronic Security Center (DESC)", href: "https://www.desc.gov.ae/" },
-  { name: "Saudi Central Bank (SAMA)", href: "https://www.sama.gov.sa/" },
   { name: "OWASP", href: "https://owasp.org/" },
-  { name: "National Cyber Security Centre (NCSC)", href: "https://www.ncsc.gov.uk/" },
-  { name: "University of Oxford", href: "https://www.ox.ac.uk/" },
 ];
 
 const searchServices = [
@@ -95,26 +88,9 @@ const homepageStructuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
-      name: "Golden Valley Cyber",
-      url: "https://gvcyber.com",
-      description: "Security audit, ISO 27001 implementation, application security testing, vulnerability scanning and penetration testing services.",
-      areaServed: ["Global", "United Kingdom"],
-      serviceType: [
-        "ISO audit",
-        "ISO 27001 implementation",
-        "security audit",
-        "application security testing",
-        "vulnerability scanning",
-        "penetration testing",
-        "Cyber Essentials readiness",
-        "PCI DSS readiness",
-        "SOC 2 readiness",
-      ],
-    },
-    {
       "@type": "ItemList",
       name: "Golden Valley Cyber security services",
+      provider: { "@id": "https://gvcyber.com/#organization" },
       itemListElement: searchServices.map((service, index) => ({
         "@type": "ListItem",
         position: index + 1,
@@ -140,10 +116,13 @@ export default function Home() {
           <p className="eyebrow"><span /> CYBER SECURITY CONSULTANCY</p>
           <h1>Sovereign digital<br />resilience.</h1>
           <p className="hero-intro">
-            Deterministic, audit-ready security — built on the heritage of the
-            UK&apos;s cyber cluster, without generative-AI opacity.
+            Cyber security consultancy in Cheltenham, UK: ISO 27001, penetration
+            testing and vulnerability scanning, with evidence you can audit.
           </p>
-          <a className="reference-link" href="/services">Explore what we do <Arrow /></a>
+          <div className="hero-actions">
+            <a className="reference-link reference-link-primary" href="/contact">Book a scoping call <Arrow /></a>
+            <a className="reference-link" href="/services">Explore what we do <Arrow /></a>
+          </div>
         </div>
 
         <a className="globe-stage globe-stage-link" href="/global-standards" aria-label="Open interactive global cyber standards explorer">
@@ -152,7 +131,7 @@ export default function Home() {
               alt="Globe preview with cyber security standards by region"
               draggable="false"
               height="640"
-              src="/globe-frames/frame-000.png"
+              src="/globe-frames/frame-000.webp"
               width="640"
               fetchPriority="high"
               decoding="async"
@@ -178,8 +157,8 @@ export default function Home() {
         </a>
       </section>
 
-      <section className="trust-strip" aria-label="Aligned with industry bodies and frameworks">
-        <p>ALIGNED WITH INDUSTRY BODIES &amp; FRAMEWORKS</p>
+      <section className="trust-strip" aria-label="Standards and bodies we reference">
+        <p>STANDARDS &amp; BODIES WE REFERENCE</p>
         <div className="trust-window">
           <div className="trust-track">
             {[...trustItems, ...trustItems].map((item, index) => (
@@ -206,7 +185,7 @@ export default function Home() {
       </section>
 
       <section className="about-statement" id="about">
-        <p>Golden Valley Cyber turns technical exposure into verifiable, deterministic security decisions. We look deeper, explain plainly and focus on the risks that can genuinely affect your organisation.</p>
+        <p>Golden Valley Cyber turns technical exposure into verifiable, evidence-based security decisions. We look deeper, explain plainly and focus on the risks that can genuinely affect your organisation.</p>
       </section>
 
       <section className="search-services" aria-label="Common Golden Valley Cyber security services">
@@ -226,8 +205,8 @@ export default function Home() {
 
       <section className="stories reference-stories" id="stories">
         <div className="reference-section-title">
-          <h2>Client stories</h2>
-          <a href="/case-studies">See all client stories <Arrow /></a>
+          <h2>Example engagements</h2>
+          <a href="/case-studies">See all examples <Arrow /></a>
         </div>
         <div className="story-grid">
           {caseStudies.map((story, index) => (
@@ -237,10 +216,10 @@ export default function Home() {
                 <div className="story-grid-lines" aria-hidden="true" />
               </div>
               <div className="story-copy">
-                <p className="story-type">{story.sector.toUpperCase()} · REPRESENTATIVE ENGAGEMENT</p>
+                <p className="story-type">{story.sector.toUpperCase()} · ILLUSTRATIVE SCENARIO</p>
                 <h3>{story.title}</h3>
                 <p>{story.summary}</p>
-                <a href={`/case-studies/${story.slug}`} aria-label={`Read: ${story.title}`}>Read the story <Arrow /></a>
+                <a href={`/case-studies/${story.slug}`} aria-label={`Read: ${story.title}`}>Read the example <Arrow /></a>
               </div>
             </article>
           ))}

@@ -77,8 +77,8 @@ delivery, and continuous resilience.
 
 ## Case studies
 
-Representative engagements in financial services, healthcare, and SaaS covering security
-audit, exposure validation, and secure delivery.
+Illustrative scenarios (anonymised, not named client results) covering security audit,
+exposure validation, forensics and secure delivery.
 
 ## Contact
 

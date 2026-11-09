@@ -1,11 +1,10 @@
-import { socials } from "../data/socials";
 
 export default function SiteFooter() {
   return (
     <footer>
       <div className="footer-main">
         <a className="brand footer-brand" href="/" aria-label="Golden Valley Cyber home">
-          <img src="/logo.png" alt="Golden Valley Cyber" width="885" height="133" />
+          <img src="/logo.png" alt="Golden Valley Cyber" width="490" height="147" />
         </a>
         <div className="footer-links">
           <a href="/services/audits">Audits</a>
@@ -22,11 +21,6 @@ export default function SiteFooter() {
           <a href="/case-studies">Case studies</a>
           <a href="/careers">Careers</a>
           <a href="/contact">Contact</a>
-          <div className="social-links" aria-label="Golden Valley Cyber social links">
-            {socials.map((social) => (
-              <a href={social.href} target="_blank" rel="noreferrer" key={social.label}>{social.label}</a>
-            ))}
-          </div>
         </div>
         <div className="footer-legal">
           <div className="footer-legal-address">

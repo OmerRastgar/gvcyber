@@ -38,7 +38,6 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
-/cybergaar-site.tar.gz
 
 # Internal / brand-guide scaffolding (not part of the website build)
 /.commandcode/
@@ -47,6 +46,5 @@ yarn-error.log*
 /build_brand_guide.py
 /newbrand.md
 /privacypoilcy.txt
-/CyberGaarGlobe.tsx
 /HomePage.tsx
 /frames/

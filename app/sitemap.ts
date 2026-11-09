@@ -5,6 +5,9 @@ import { industries } from "./data/industries";
 import { services } from "./data/services";
 
 const baseUrl = "https://gvcyber.com";
+// Fixed date: a fresh `new Date()` on every build tells crawlers every page changed daily.
+// Bump this when content meaningfully changes.
+const lastModified = new Date("2026-11-09");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -27,10 +30,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   return [
-    ...staticRoutes.map((route) => ({ url: `${baseUrl}${route}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: route === "" ? 1 : 0.8 })),
-    ...industries.map((industry) => ({ url: `${baseUrl}/industries/${industry.slug}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.75 })),
-    ...expertSuggestions.map((post) => ({ url: `${baseUrl}/expert-suggestions/${post.slug}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.72 })),
-    ...services.map((service) => ({ url: `${baseUrl}/services/${service.slug}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 })),
-    ...caseStudies.map((study) => ({ url: `${baseUrl}/case-studies/${study.slug}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 })),
+    ...staticRoutes.map((route) => ({ url: `${baseUrl}${route}`, lastModified })),
+    ...industries.map((industry) => ({ url: `${baseUrl}/industries/${industry.slug}`, lastModified })),
+    ...expertSuggestions.map((post) => ({ url: `${baseUrl}/expert-suggestions/${post.slug}`, lastModified: new Date(post.updated) })),
+    ...services.map((service) => ({ url: `${baseUrl}/services/${service.slug}`, lastModified })),
+    ...caseStudies.map((study) => ({ url: `${baseUrl}/case-studies/${study.slug}`, lastModified })),
   ];
 }

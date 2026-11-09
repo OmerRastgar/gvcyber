@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import SiteFooter from "../../components/SiteFooter";
 import SiteHeader from "../../components/SiteHeader";
 import { caseStudies, getCaseStudy } from "../../data/caseStudies";
+import { clip } from "../../lib/seo";
 
 type CaseStudyPageProps = { params: Promise<{ slug: string }> };
 
@@ -13,24 +14,24 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
   const study = getCaseStudy((await params).slug);
   return study ? {
-    title: `${study.title} | Security Case Study | Golden Valley Cyber`,
-    description: `${study.summary} Representative Golden Valley Cyber work covering security assessment, remediation and business risk reduction.`,
+    title: `${study.title} | Security Case Study`,
+    description: clip(study.summary),
     keywords: [study.sector, "security case study", "cybersecurity case study", "security assessment", "vulnerability scanning", "penetration testing", "security audit", ...(study.tags ?? [])],
     alternates: { canonical: `/case-studies/${study.slug}` },
     openGraph: {
       title: `${study.title} | Security Case Study | Golden Valley Cyber`,
-      description: `${study.summary} Representative Golden Valley Cyber work covering security assessment, remediation and business risk reduction.`,
+      description: clip(study.summary),
       url: `https://gvcyber.com/case-studies/${study.slug}`,
       siteName: "Golden Valley Cyber",
       locale: "en_GB",
       type: "article",
-      images: [{ url: "/og.png", width: 1672, height: 941, alt: `${study.title} | Golden Valley Cyber` }],
+      images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: `${study.title} | Golden Valley Cyber` }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${study.title} | Security Case Study | Golden Valley Cyber`,
       description: `${study.summary}`,
-      images: ["/og.png"],
+      images: ["/og-gvcyber.png"],
     },
   } : {};
 }
@@ -48,16 +49,16 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         description: study.summary,
         articleSection: study.sector,
         keywords: study.tags?.join(", "),
-        author: { "@type": "Organization", name: "Golden Valley Cyber", url: "https://gvcyber.com" },
-        publisher: { "@type": "Organization", name: "Golden Valley Cyber", url: "https://gvcyber.com", logo: { "@type": "ImageObject", url: "https://gvcyber.com/logo.png" } },
+        author: { "@id": "https://gvcyber.com/#organization" },
+        publisher: { "@id": "https://gvcyber.com/#organization" },
         mainEntityOfPage: `https://gvcyber.com/case-studies/${study.slug}`,
+        image: `https://gvcyber.com${study.image ?? "/og-gvcyber.png"}`,
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Case studies", item: "https://gvcyber.com/case-studies" },
-          { "@type": "ListItem", position: 2, name: study.sector, item: "https://gvcyber.com/case-studies" },
-          { "@type": "ListItem", position: 3, name: study.title, item: `https://gvcyber.com/case-studies/${study.slug}` },
+          { "@type": "ListItem", position: 2, name: study.title, item: `https://gvcyber.com/case-studies/${study.slug}` },
         ],
       },
     ],
@@ -72,7 +73,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <h1>{study.title}</h1>
         <p>{study.summary}</p>
         {study.tags?.length ? <div className="case-detail-tags">{study.tags.map((tag) => <span key={tag}>{tag}</span>)}</div> : null}
-        {study.image ? <img className="case-detail-image" src={study.image} alt={`${study.title} visual`} loading="eager" /> : null}
+        {study.image ? <img className="case-detail-image" src={study.image} alt={`${study.title} visual`} width={1815} height={866} loading="eager" /> : null}
       </section>
 
       {study.metrics?.length ? (
@@ -111,7 +112,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         </section>
       ) : null}
 
-      <section className="case-placeholder-note"><p>STORY STATUS</p><h2>This representative case study is ready for approved client detail, evidence and metrics.</h2><a href="/contact">Discuss a similar challenge <span aria-hidden="true">â†’</span></a></section>
+      <section className="case-placeholder-note"><p>ABOUT THIS EXAMPLE</p><h2>An illustrative scenario based on the type of work we deliver. Client details are anonymised and no named client or measured result is implied.</h2><a href="/contact">Discuss a similar challenge <span aria-hidden="true">→</span></a></section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyStructuredData) }} />
       <SiteFooter />
     </main>

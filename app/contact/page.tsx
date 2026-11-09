@@ -4,8 +4,8 @@ import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Contact Golden Valley Cyber | Scope a Security Audit or Test",
-  description: "Contact Golden Valley Cyber to discuss ISO audit support, ISO 27001 implementation, application security testing, vulnerability scanning, penetration testing, compliance automation or an MSP partnership.",
+  title: "Contact Us: Scope a Security Audit",
+  description: "Contact Golden Valley Cyber in Cheltenham, UK to scope ISO 27001, a security audit, penetration testing, vulnerability scanning or an MSP partnership.",
   keywords: ["contact Golden Valley Cyber", "scope security audit", "ISO 27001 implementation", "application security testing", "vulnerability scanning quote", "penetration testing quote", "MSP security partner"],
   alternates: { canonical: "/contact" },
   openGraph: {
@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     siteName: "Golden Valley Cyber",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/og.png", width: 1672, height: 941, alt: "Contact Golden Valley Cyber" }],
+    images: [{ url: "/og-gvcyber.png", width: 1672, height: 941, alt: "Contact Golden Valley Cyber" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact Golden Valley Cyber",
     description: "Scope a security audit or test.",
-    images: ["/og.png"],
+    images: ["/og-gvcyber.png"],
   },
 };
 
