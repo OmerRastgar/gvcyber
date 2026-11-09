@@ -4,7 +4,7 @@
  * /de pages are noindex, stay out of the sitemap, and the language suggestion banner is not shown.
  */
 export const IMPRESSUM = {
-  legalName: "Soft Innovators UK Ltd",
+  legalName: "Soft Innovators (UK) Ltd",
   tradingAs: "Golden Valley Cyber",
   legalForm: "Private company limited by shares (Ltd), eingetragen in England und Wales",
   companyNumber: "06890751",
@@ -13,13 +13,13 @@ export const IMPRESSUM = {
   /** Telefonnummer (zweiter schneller Kontaktweg neben der E-Mail). */
   phone: "",
   /** Vertretungsberechtigte (Directors), z. B. "Max Mustermann (Director)". */
-  directors: "",
+  directors: "Muhammad Ehtasham Sarwar (Director)",
   /** Umsatzsteuer-Identifikationsnummer nach Paragraph 27a UStG, falls vorhanden. */
   vatId: "",
   /** Auf true setzen, wenn bewusst keine USt-IdNr. vorhanden ist (dann wird ein entsprechender Hinweis angezeigt). */
   vatIdNotApplicable: false,
   /** Verantwortlich für Inhalte nach Paragraph 18 Abs. 2 MStV (Name und Anschrift). */
-  contentResponsible: "",
+  contentResponsible: "Muhammad Ehtasham Sarwar, Frogmore House, 6 Ormond Place, Cheltenham, GL50 1JD, Vereinigtes Königreich",
   /**
    * Auf true setzen, sobald Impressum und Datenschutzerklärung von einer deutschen Rechtsanwältin oder einem
    * deutschen Rechtsanwalt geprüft wurden und alle [PRÜFEN]-Hinweise im Text geklärt sind.

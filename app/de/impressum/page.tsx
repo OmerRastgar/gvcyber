@@ -5,7 +5,7 @@ import { deMetadata, deWebPage } from "../../i18n/locales";
 
 export const metadata = deMetadata({
   title: "Impressum",
-  description: "Anbieterkennzeichnung nach § 5 DDG für Golden Valley Cyber, eine Marke der Soft Innovators UK Ltd, Cheltenham, Vereinigtes Königreich.",
+  description: "Anbieterkennzeichnung nach § 5 DDG für Golden Valley Cyber, eine Marke der Soft Innovators (UK) Ltd, Cheltenham, Vereinigtes Königreich.",
   path: "/de/impressum",
 });
 

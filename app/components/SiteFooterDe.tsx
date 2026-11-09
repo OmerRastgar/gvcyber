@@ -18,7 +18,7 @@ export default function SiteFooterDe() {
         </div>
         <div className="footer-legal">
           <div className="footer-legal-address">
-            <strong>Soft Innovators UK Ltd</strong>
+            <strong>Soft Innovators (UK) Ltd</strong>
             <span>Frogmore House, 6 Ormond Place, Cheltenham, GL50 1JD, Vereinigtes Königreich</span>
             <span>Eingetragen in England &amp; Wales · Company Number 06890751</span>
           </div>

@@ -10,7 +10,7 @@ export function buildServiceFaqsDe(service: DeService): Faq[] {
   const faqs: Faq[] = [
     {
       question: `Für wen ist ${service.shortName ?? service.name} gedacht?`,
-      answer: `${service.name} richtet sich an ${service.appliesTo}. Die Leistung erbringt Golden Valley Cyber, eine Cybersicherheitsberatung (Marke der Soft Innovators UK Ltd) mit Sitz in Cheltenham, Vereinigtes Königreich.`,
+      answer: `${service.name} richtet sich an ${service.appliesTo}. Die Leistung erbringt Golden Valley Cyber, eine Cybersicherheitsberatung (Marke der Soft Innovators (UK) Ltd) mit Sitz in Cheltenham, Vereinigtes Königreich.`,
     },
     {
       question: `Welches Risiko adressiert ${service.shortName ?? service.name}?`,

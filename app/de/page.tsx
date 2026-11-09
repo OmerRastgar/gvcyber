@@ -81,7 +81,7 @@ export default function DeHome() {
 
       <section className="about-statement" id="about">
         <p>
-          Was wir sind und was nicht: Golden Valley Cyber ist eine Marke der Soft Innovators UK Ltd mit Sitz in Cheltenham, Vereinigtes Königreich. Wir bereiten Sie auf Audits, Zertifizierungen und Nachweise vor und schließen technische Lücken. Wir sind keine Zertifizierungs- oder Prüfstelle, kein vom BSI zugelassener Prüfdienstleister und stellen weder Zertifikate noch Testate aus.
+          Was wir sind und was nicht: Golden Valley Cyber ist eine Marke der Soft Innovators (UK) Ltd mit Sitz in Cheltenham, Vereinigtes Königreich. Wir bereiten Sie auf Audits, Zertifizierungen und Nachweise vor und schließen technische Lücken. Wir sind keine Zertifizierungs- oder Prüfstelle, kein vom BSI zugelassener Prüfdienstleister und stellen weder Zertifikate noch Testate aus.
         </p>
       </section>
 

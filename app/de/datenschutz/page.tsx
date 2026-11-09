@@ -5,7 +5,7 @@ import { deMetadata, deWebPage } from "../../i18n/locales";
 
 export const metadata = deMetadata({
   title: "Datenschutzerklärung",
-  description: "Wie Golden Valley Cyber, eine Marke der Soft Innovators UK Ltd, personenbezogene Daten auf dieser Website nach der DSGVO verarbeitet, speichert und schützt.",
+  description: "Wie Golden Valley Cyber, eine Marke der Soft Innovators (UK) Ltd, personenbezogene Daten auf dieser Website nach der DSGVO verarbeitet, speichert und schützt.",
   path: "/de/datenschutz",
 });
 
