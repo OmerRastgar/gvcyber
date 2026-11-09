@@ -36,12 +36,13 @@ const SECURITY_HEADERS: Record<string, string> = {
   // Inline scripts/styles are required for JSON-LD and framework bootstrapping.
   "Content-Security-Policy": [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline'",
+    // Cloudflare injects its Web Analytics beacon at the zone level.
+    "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data:",
     // Display and mono fonts are loaded from these hosts by app/globals.css.
     "font-src 'self' data: https://static1.squarespace.com https://cdn.jsdelivr.net",
-    "connect-src 'self'",
+    "connect-src 'self' https://cloudflareinsights.com",
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self' https://formspree.io mailto:",
