@@ -951,3 +951,10 @@ html[lang="de"] .primary-nav > a { white-space: nowrap; }
 @media (max-width: 600px) {
   html[lang="de"] .inner-hero h1, html[lang="de"] .service-detail-title h1, html[lang="de"] .contact-page-hero h1 { font-size: 34px; }
 }
+
+/* German homepage hero (same layout as the English hero, longer words) */
+html[lang="de"] .hero-copy h1 { font-size: clamp(36px, 3.9vw, 62px); hyphens: manual; overflow-wrap: break-word; }
+html[lang="de"] .hero-copy { min-width: 0; }
+@media (max-width: 600px) {
+  html[lang="de"] .hero-copy h1 { font-size: 36px; }
+}

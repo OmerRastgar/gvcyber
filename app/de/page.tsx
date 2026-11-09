@@ -10,13 +10,74 @@ export const metadata = deMetadata({
   keywords: ["IT-Sicherheit", "ISO 27001", "IT-Grundschutz", "NIS2", "KRITIS", "TISAX", "BSI C5", "DSGVO", "Penetrationstest", "Schwachstellenscan"],
 });
 
-const germanOffers = [
-  { slug: "it-grundschutz", title: "ISO 27001 auf Basis von IT-Grundschutz", copy: "ISMS-Aufbau nach BSI-Standards: Strukturanalyse, Schutzbedarf, Modellierung, IT-Grundschutz-Check und Risikoanalyse." },
-  { slug: "kritis-nis2", title: "KRITIS und NIS2-Umsetzung", copy: "Gap-Analyse, Maßnahmenplan und Vorbereitung auf Nachweise für Betreiber kritischer Infrastrukturen und betroffene Einrichtungen." },
-  { slug: "tisax", title: "TISAX-Vorbereitung", copy: "Gap-Analyse gegen VDA ISA und Umsetzungsbegleitung für Zulieferer der Automobilindustrie." },
-  { slug: "bsi-c5", title: "BSI C5 für Cloud-Anbieter", copy: "Abbildung Ihrer Kontrollen auf den C5-Kriterienkatalog und Vorbereitung auf die Prüfung." },
-  { slug: "gdpr-compliance", title: "DSGVO-Compliance", copy: "VVT, technische und organisatorische Maßnahmen, AVV-Prüfung und Unterstützung bei Datenschutz-Folgenabschätzungen." },
-  { slug: "network-penetration-testing", title: "Penetrationstests", copy: "Manuelle Tests für Netzwerke, Webanwendungen, Cloud und mobile Apps mit klaren Handlungsempfehlungen." },
+const offers = [
+  {
+    id: "audit",
+    icon: "◉",
+    title: "Audit & Compliance",
+    copy: "Wir zeigen, welche Maßnahmen Sie haben, welche Nachweise fehlen und was bis zur Prüfungsreife zu tun ist.",
+    items: [
+      { label: "ISO 27001", href: "/de/services/iso-27001" },
+      { label: "NIS2", href: "/de/services/nis2" },
+      { label: "DSGVO", href: "/de/services/gdpr-compliance" },
+      { label: "SOC 2", href: "/de/services/soc-2" },
+      { label: "DORA", href: "/de/services/dora" },
+    ],
+    href: "/de/services/audits",
+    cta: "Alle Audits ansehen",
+  },
+  {
+    id: "deutschland",
+    icon: "✣",
+    title: "Für den deutschen Markt",
+    copy: "Rahmenwerke und Nachweise, die Kunden, Aufsicht und Ausschreibungen in Deutschland tatsächlich verlangen.",
+    items: [
+      { label: "IT-Grundschutz", href: "/de/services/it-grundschutz" },
+      { label: "KRITIS & NIS2", href: "/de/services/kritis-nis2" },
+      { label: "TISAX", href: "/de/services/tisax" },
+      { label: "BSI C5", href: "/de/services/bsi-c5" },
+    ],
+    href: "/de/services",
+    cta: "Alle Leistungen ansehen",
+  },
+  {
+    id: "tests",
+    icon: "⊞",
+    title: "Tests & Scans",
+    copy: "Manuelle Penetrationstests und validierte Schwachstellenscans, mit Ergebnissen, die Ihr Team direkt umsetzen kann.",
+    items: [
+      { label: "Netzwerk-Pentest", href: "/de/services/network-penetration-testing" },
+      { label: "Web-Pentest", href: "/de/services/web-application-penetration-testing" },
+      { label: "Cloud-Pentest", href: "/de/services/cloud-infrastructure-penetration-testing" },
+      { label: "Netzwerk-Scan", href: "/de/services/network-vulnerability-scanning" },
+      { label: "Cloud-Scan", href: "/de/services/cloud-native-vulnerability-scanning" },
+    ],
+    href: "/de/services/penetration-testing",
+    cta: "Alle Tests ansehen",
+  },
+];
+
+// Frameworks we work with. Names only: no logos and no claim of endorsement or affiliation.
+const frameworks = [
+  { name: "ISO/IEC 27001", href: "/de/services/iso-27001" },
+  { name: "BSI IT-Grundschutz", href: "/de/services/it-grundschutz" },
+  { name: "NIS2", href: "/de/services/nis2" },
+  { name: "KRITIS", href: "/de/services/kritis-nis2" },
+  { name: "TISAX · VDA ISA", href: "/de/services/tisax" },
+  { name: "BSI C5", href: "/de/services/bsi-c5" },
+  { name: "DSGVO", href: "/de/services/gdpr-compliance" },
+  { name: "DORA", href: "/de/services/dora" },
+  { name: "SOC 2", href: "/de/services/soc-2" },
+  { name: "OWASP", href: "/de/services/web-application-penetration-testing" },
+];
+
+const searched = [
+  { title: "ISO 27001 auf Basis von IT-Grundschutz", href: "/de/services/it-grundschutz", copy: "Strukturanalyse, Schutzbedarf, Modellierung, IT-Grundschutz-Check und Risikoanalyse für Ihr ISMS." },
+  { title: "KRITIS und NIS2-Umsetzung", href: "/de/services/kritis-nis2", copy: "Gap-Analyse, Maßnahmenplan und Vorbereitung auf Nachweise für Betreiber kritischer Infrastrukturen." },
+  { title: "TISAX-Vorbereitung", href: "/de/services/tisax", copy: "Gap-Analyse gegen VDA ISA und Umsetzungsbegleitung für Zulieferer der Automobilindustrie." },
+  { title: "BSI C5 für Cloud-Anbieter", href: "/de/services/bsi-c5", copy: "Abbildung Ihrer Kontrollen auf den C5-Kriterienkatalog und Vorbereitung auf die Prüfung." },
+  { title: "DSGVO-Compliance", href: "/de/services/gdpr-compliance", copy: "VVT, technische und organisatorische Maßnahmen, AVV-Prüfung und Unterstützung bei Datenschutz-Folgenabschätzungen." },
+  { title: "Penetrationstests", href: "/de/services/penetration-testing", copy: "Manuelle Tests für Netzwerke, Webanwendungen, Cloud und mobile Apps mit klaren Handlungsempfehlungen." },
 ];
 
 const pageStructuredData = {
@@ -27,56 +88,90 @@ const pageStructuredData = {
       "@type": "ItemList",
       name: "Leistungen von Golden Valley Cyber für den deutschen Markt",
       provider: { "@id": "https://gvcyber.com/#organization" },
-      itemListElement: germanOffers.map((offer, index) => ({ "@type": "ListItem", position: index + 1, name: offer.title, url: `https://gvcyber.com/de/services/${offer.slug}` })),
+      itemListElement: searched.map((service, index) => ({ "@type": "ListItem", position: index + 1, name: service.title, url: `https://gvcyber.com${service.href}` })),
     },
   ],
 };
 
+function Arrow() {
+  return <span aria-hidden="true">⟶</span>;
+}
+
 export default function DeHome() {
   return (
-    <main className="inner-page" id="top">
+    <main>
       <SiteHeaderDe />
 
-      <section className="inner-hero">
-        <div>
+      <section className="hero reference-hero" id="top">
+        <div className="hero-noise" aria-hidden="true" />
+        <div className="hero-copy">
           <p className="eyebrow"><span /> IT-SICHERHEITSBERATUNG</p>
-          <h1>Informationssicherheit, die Prüfungen standhält.</h1>
-        </div>
-        <div>
-          <p>
-            Golden Valley Cyber unterstützt Unternehmen in Deutschland bei ISO 27001 und IT-Grundschutz, NIS2 und KRITIS, TISAX, BSI C5 und DSGVO sowie mit Penetrationstests und Schwachstellenscans, mit Nachweisen, die Sie prüfen können.
+          <h1>Informations&shy;sicherheit, die Prüfungen standhält.</h1>
+          <p className="hero-intro">
+            Cybersicherheitsberatung aus Cheltenham, UK, für Unternehmen in Deutschland: ISO 27001 und IT-Grundschutz, NIS2 und KRITIS, TISAX, BSI C5, DSGVO, Penetrationstests und Schwachstellenscans, mit Nachweisen, die Sie prüfen können.
           </p>
-          <a className="hero-cta" href="/de/contact">Erstgespräch vereinbaren <span aria-hidden="true">⟶</span></a>
+          <div className="hero-actions">
+            <a className="reference-link reference-link-primary" href="/de/contact">Erstgespräch vereinbaren <Arrow /></a>
+            <a className="reference-link" href="/de/services">Leistungen ansehen <Arrow /></a>
+          </div>
+        </div>
+
+        <div className="globe-stage">
+          <div className="globe-sequence globe-preview">
+            <img
+              alt="Globus mit Cybersicherheits-Standards nach Region"
+              draggable="false"
+              height="640"
+              src="/globe-frames/frame-000.webp"
+              width="640"
+              fetchPriority="high"
+              decoding="async"
+            />
+            <div className="globe-readable-label globe-readable-us" aria-hidden="true">
+              <strong>USA</strong>
+              <span>NIST</span>
+              <span>SOC 2</span>
+              <span>PCI DSS</span>
+            </div>
+            <div className="globe-readable-label globe-readable-uk" aria-hidden="true">
+              <strong>VEREINIGTES KÖNIGREICH</strong>
+              <span>Cyber Essentials</span>
+              <span>ISO 27001</span>
+            </div>
+            <div className="globe-readable-label globe-readable-eu" aria-hidden="true">
+              <strong>DEUTSCHLAND</strong>
+              <span>IT-Grundschutz</span>
+              <span>NIS2</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="catalog-section">
-        <div className="catalog-heading">
-          <p>FÜR DEN DEUTSCHEN MARKT</p>
-          <h2>Anforderungen, die in Deutschland tatsächlich gestellt werden.</h2>
+      <section className="trust-strip" aria-label="Rahmenwerke, mit denen wir arbeiten">
+        <p>RAHMENWERKE, MIT DENEN WIR ARBEITEN</p>
+        <div className="trust-window">
+          <div className="trust-track">
+            {[...frameworks, ...frameworks].map((item, index) => (
+              <a href={item.href} key={`${item.name}-${index}`}>{item.name}</a>
+            ))}
+          </div>
         </div>
-        <div className="catalog-grid">
-          {germanOffers.map((offer, index) => (
-            <article className="catalog-card" key={offer.slug}>
-              <div className="catalog-card-top"><span>{String(index + 1).padStart(2, "0")}</span></div>
+      </section>
+
+      <section className="offers" aria-label="Leistungen von Golden Valley Cyber">
+        {offers.map((offer) => (
+          <article className="offer-column" id={offer.id} key={offer.title}>
+            <div className="offer-title">
+              <span className="offer-icon" aria-hidden="true">{offer.icon}</span>
               <h2>{offer.title}</h2>
-              <p>{offer.copy}</p>
-              <a href={`/de/services/${offer.slug}`}>Mehr erfahren <span aria-hidden="true">⟶</span></a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="delivery-section">
-        <div>
-          <p className="eyebrow"><span /> SO ARBEITEN WIR</p>
-          <h2>Vom Umfang bis zum Nachweis, ohne Rätselraten.</h2>
-        </div>
-        <ol>
-          <li><span>01</span><div><h3>Umfang klären</h3><p>Wir legen Systeme, Standorte, Beteiligte und das gewünschte Ergebnis fest, bevor die Arbeit beginnt.</p></div></li>
-          <li><span>02</span><div><h3>Prüfen und validieren</h3><p>Wir erheben Nachweise, testen das Wesentliche und trennen echtes Risiko von Rauschen.</p></div></li>
-          <li><span>03</span><div><h3>Handlungsbedarf klar machen</h3><p>Sie erhalten priorisierte Ergebnisse, praxisnahe Maßnahmen und einen klaren Weg bis zum Abschluss.</p></div></li>
-        </ol>
+            </div>
+            <p>{offer.copy}</p>
+            <div className="offer-pills">
+              {offer.items.map((item) => <a href={item.href} key={item.label}>{item.label}</a>)}
+            </div>
+            <a className="offer-explore" href={offer.href}>{offer.cta} <Arrow /></a>
+          </article>
+        ))}
       </section>
 
       <section className="about-statement" id="about">
@@ -85,9 +180,30 @@ export default function DeHome() {
         </p>
       </section>
 
-      <section className="detail-cta">
-        <div><p>NÄCHSTER SCHRITT</p><h2>Sprechen Sie mit uns über Ihren Umfang.</h2></div>
-        <a href="/de/contact">Kontakt aufnehmen <span aria-hidden="true">⟶</span></a>
+      <section className="search-services" aria-label="Häufig gesuchte Leistungen in Deutschland">
+        <div className="reference-section-title">
+          <h2>Was Unternehmen in Deutschland suchen</h2>
+          <a href="/de/services">Alle Leistungen <Arrow /></a>
+        </div>
+        <div className="search-service-grid">
+          {searched.map((service) => (
+            <article key={service.title}>
+              <h3><a href={service.href}>{service.title}</a></h3>
+              <p>{service.copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="contact reference-contact" id="contact">
+        <div>
+          <p className="eyebrow"><span /> WIE KÖNNEN WIR HELFEN?</p>
+          <h2>Lassen Sie uns Ihren<br />nächsten Schritt absichern.</h2>
+        </div>
+        <div className="contact-side">
+          <p>Sagen Sie uns, was Sie schützen, was sich ändert oder wo Sie Gewissheit brauchen. Wir helfen Ihnen, den richtigen ersten Schritt zu finden.</p>
+          <a className="reference-link" href="/de/contact">Golden Valley Cyber kontaktieren <Arrow /></a>
+        </div>
       </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageStructuredData) }} />
